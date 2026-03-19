@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://bohjphj6soppr"]
+
+[ext_resource type="Script" uid="uid://bnjgwvighbre8" path="res://scenes/game.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://bvxodu8v2sfvn" path="res://scenes/paper.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dw4j18qekh7nd" path="res://scenes/clickable.tscn" id="2_lnu2h"]
+
+[sub_resource type="Animation" id="Animation_yqjtg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("paper3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(604, 1016.00006)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("paper4:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(592, 1010.00006)]
+}
+
+[sub_resource type="Animation" id="Animation_lnu2h"]
+resource_name = "paper1_up"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("paper3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.03333334, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(604, 1016.00006), Vector2(604, 348)]
+}
+
+[sub_resource type="Animation" id="Animation_lbhrr"]
+resource_name = "paper2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("paper4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(592, 1010.00006), Vector2(592, 329.00006)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lbhrr"]
+_data = {
+&"RESET": SubResource("Animation_yqjtg"),
+&"paper1": SubResource("Animation_lnu2h"),
+&"paper2": SubResource("Animation_lbhrr")
+}
+
+[node name="game" type="Node2D" unique_id=667005455]
+script = ExtResource("1_lnu2h")
+
+[node name="paper" parent="." unique_id=943171573 instance=ExtResource("1_yqjtg")]
+position = Vector2(363, 412)
+
+[node name="Clickable" parent="paper" unique_id=1598772029 instance=ExtResource("2_lnu2h")]
+target = "paper1"
+
+[node name="paper2" parent="." unique_id=958297935 instance=ExtResource("1_yqjtg")]
+modulate = Color(0.66306937, 0.29815155, 0.049263135, 1)
+position = Vector2(780, 412)
+
+[node name="Clickable" parent="paper2" unique_id=723641548 instance=ExtResource("2_lnu2h")]
+target = "paper2"
+
+[node name="paper3" parent="." unique_id=313447067 instance=ExtResource("1_yqjtg")]
+position = Vector2(604, 1016.00006)
+scale = Vector2(3.751369, 3.9219594)
+
+[node name="paper4" parent="." unique_id=1876787906 instance=ExtResource("1_yqjtg")]
+modulate = Color(0.52881783, 0, 0.070983015, 1)
+position = Vector2(592, 1010.00006)
+scale = Vector2(3.7161357, 3.9905565)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1679553784]
+libraries/ = SubResource("AnimationLibrary_lbhrr")

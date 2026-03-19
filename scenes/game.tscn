@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://bohjphj6soppr"]
+
+[ext_resource type="Script" uid="uid://bnjgwvighbre8" path="res://scripts/game.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://bvxodu8v2sfvn" path="res://scenes/paper.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dw4j18qekh7nd" path="res://scenes/clickable.tscn" id="2_lnu2h"]
+[ext_resource type="Shader" uid="uid://x6baa18wdqj" path="res://scenes/vignete.gdshader" id="3_iywne"]
+[ext_resource type="Script" uid="uid://db2ct1gggghjh" path="res://scripts/camera.gd" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://fsd501mxan24" path="res://scripts/color_rect.gd" id="6_p57ef"]
+
+[sub_resource type="Animation" id="Animation_yqjtg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("paper3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(604, 1016.00006)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("paper4:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(592, 1010.00006)]
+}
+
+[sub_resource type="Animation" id="Animation_lnu2h"]
+resource_name = "paper1_up"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("paper3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(17, 689), Vector2(17, 62.00006)]
+}
+
+[sub_resource type="Animation" id="Animation_lbhrr"]
+resource_name = "paper2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("paper4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(23, 697), Vector2(23, 53.000122)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lbhrr"]
+_data = {
+&"RESET": SubResource("Animation_yqjtg"),
+&"paper1": SubResource("Animation_lnu2h"),
+&"paper2": SubResource("Animation_lbhrr")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p57ef"]
+shader = ExtResource("3_iywne")
+shader_parameter/outerRadius = 1.0
+shader_parameter/MainAlpha = 0.0
+
+[node name="game" type="Node2D" unique_id=667005455]
+script = ExtResource("1_lnu2h")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=383754331 node_paths=PackedStringArray("player")]
+position = Vector2(1, 2)
+offset = Vector2(-5, -5)
+script = ExtResource("4_lbhrr")
+player = NodePath("..")
+
+[node name="paper" parent="." unique_id=943171573 instance=ExtResource("1_yqjtg")]
+position = Vector2(-211, 91)
+
+[node name="Clickable" parent="paper" unique_id=1598772029 instance=ExtResource("2_lnu2h")]
+target = "paper1"
+
+[node name="paper2" parent="." unique_id=958297935 instance=ExtResource("1_yqjtg")]
+modulate = Color(0.66306937, 0.29815155, 0.049263135, 1)
+position = Vector2(206, 91)
+
+[node name="Clickable" parent="paper2" unique_id=723641548 instance=ExtResource("2_lnu2h")]
+target = "paper2"
+
+[node name="paper3" parent="." unique_id=313447067 instance=ExtResource("1_yqjtg")]
+position = Vector2(604, 1016.00006)
+scale = Vector2(3.751369, 3.9219594)
+
+[node name="paper4" parent="." unique_id=1876787906 instance=ExtResource("1_yqjtg")]
+modulate = Color(0.52881783, 0, 0.070983015, 1)
+position = Vector2(592, 1010.00006)
+scale = Vector2(3.7161357, 3.9905565)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1679553784]
+libraries/ = SubResource("AnimationLibrary_lbhrr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1097841892]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1876485874]
+material = SubResource("ShaderMaterial_p57ef")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_p57ef")
