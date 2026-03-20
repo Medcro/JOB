@@ -4,15 +4,19 @@
 [ext_resource type="PackedScene" uid="uid://bvxodu8v2sfvn" path="res://scenes/paper.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://dw4j18qekh7nd" path="res://scenes/clickable.tscn" id="2_lnu2h"]
 [ext_resource type="Shader" uid="uid://x6baa18wdqj" path="res://scenes/vignete.gdshader" id="3_iywne"]
+[ext_resource type="Script" uid="uid://sr5dfic541p7" path="res://scripts/question_list.gd" id="3_vtaks"]
 [ext_resource type="Script" uid="uid://db2ct1gggghjh" path="res://scripts/camera.gd" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://fsd501mxan24" path="res://scripts/color_rect.gd" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://dwjmyrmt6e7tb" path="res://scenes/sanity_bar.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://d05dbwphfwsif" path="res://scenes/timer.tscn" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://1xigkl6nyh6k" path="res://scenes/qte.tscn" id="9_0tnpc"]
 
 [sub_resource type="Animation" id="Animation_yqjtg"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("paper3:position")
+tracks/0/path = NodePath("Papers/paper1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +28,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("paper4:position")
+tracks/1/path = NodePath("Papers/paper2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -36,11 +40,11 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_lnu2h"]
 resource_name = "paper1_up"
-length = 0.2
+length = 0.26666668
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("paper3:position")
+tracks/0/path = NodePath("Papers/paper1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -56,7 +60,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("paper4:position")
+tracks/0/path = NodePath("Papers/paper2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -100,14 +104,30 @@ position = Vector2(206, 91)
 [node name="Clickable" parent="paper2" unique_id=723641548 instance=ExtResource("2_lnu2h")]
 target = "paper2"
 
-[node name="paper3" parent="." unique_id=313447067 instance=ExtResource("1_yqjtg")]
+[node name="Papers" type="Node2D" parent="." unique_id=1468538940]
+script = ExtResource("3_vtaks")
+
+[node name="paper1" parent="Papers" unique_id=313447067 instance=ExtResource("1_yqjtg")]
 position = Vector2(604, 1016.00006)
 scale = Vector2(3.751369, 3.9219594)
 
-[node name="paper4" parent="." unique_id=1876787906 instance=ExtResource("1_yqjtg")]
-modulate = Color(0.52881783, 0, 0.070983015, 1)
+[node name="VBoxContainer" type="VBoxContainer" parent="Papers/paper1" unique_id=1023672649]
+offset_left = -53.047318
+offset_top = -57.369293
+offset_right = -13.0473175
+offset_bottom = -17.369293
+metadata/_edit_use_anchors_ = true
+
+[node name="paper2" parent="Papers" unique_id=1876787906 instance=ExtResource("1_yqjtg")]
 position = Vector2(592, 1010.00006)
 scale = Vector2(3.7161357, 3.9905565)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Papers/paper2" unique_id=500226139]
+offset_left = -58.663086
+offset_top = -57.385498
+offset_right = -18.663086
+offset_bottom = -17.385498
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1679553784]
 libraries/ = SubResource("AnimationLibrary_lbhrr")
@@ -123,3 +143,26 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("6_p57ef")
+
+[node name="SanityBar" parent="CanvasLayer" unique_id=1955015580 instance=ExtResource("7_u5sy4")]
+step = 0.1
+value = 100.0
+
+[node name="Timer" parent="CanvasLayer" unique_id=1206630171 instance=ExtResource("8_gee14")]
+
+[node name="QTE" parent="CanvasLayer" unique_id=501056554 instance=ExtResource("9_0tnpc")]
+
+[node name="QTETimer" type="Timer" parent="CanvasLayer/QTE" unique_id=1669069871]
+
+[node name="QuizUI" type="CanvasLayer" parent="." unique_id=1162419210]
+visible = false
+
+[node name="Background" type="ColorRect" parent="QuizUI" unique_id=1233474723]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.2509804)
+
+[connection signal="timeout" from="CanvasLayer/QTE/QTETimer" to="." method="_on_qte_timer_timeout"]

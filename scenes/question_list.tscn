@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dyqmp1qgx8xmi"]
+
+[ext_resource type="Script" uid="uid://sr5dfic541p7" path="res://scripts/question_list.gd" id="1_du20l"]
+
+[node name="PaperQuestion" type="Control" unique_id=1640619194]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_du20l")
+
+[node name="QuestionList" type="VBoxContainer" parent="." unique_id=1480966614]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

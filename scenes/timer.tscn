@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d05dbwphfwsif"]
+
+[ext_resource type="Script" uid="uid://toky25yra2ba" path="res://scripts/timer.gd" id="1_srplv"]
+
+[node name="Timer" type="Node" unique_id=1206630171]
+script = ExtResource("1_srplv")
+time = 300
+
+[node name="Label" type="Label" parent="." unique_id=2024130305]
+offset_left = 940.0
+offset_right = 1022.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 32
+text = "00:00"
+
+[node name="Timer" type="Timer" parent="." unique_id=1284407941]
