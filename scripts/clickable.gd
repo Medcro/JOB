@@ -3,9 +3,9 @@ extends Area2D
 
 static var is_any_paper_active : bool = false
 @export var target : String
-@onready var anim: AnimationPlayer = $"../../AnimationPlayer"
+@onready var anim: AnimationPlayer = $"../../../AnimationPlayer"
 @onready var timer: Timer = $Timer
-@onready var papers: Node2D = $"../../Papers"
+@onready var papers: Node2D = $"../../../Papers"
 
 var quiz_generated = false
 var current_question_index : int = 0
@@ -14,8 +14,8 @@ var hasPlayed : bool = false
 signal timer_timeout
 signal paper_closed
 
-@onready var question_label = $"../../Papers/paper1/VBoxContainer/Label"
-@onready var answer_input = $"../../Papers/paper2/VBoxContainer/LineEdit"
+@onready var question_label = $"../../../Papers/paper1/VBoxContainer/Label"
+@onready var answer_input = $"../../../Papers/paper2/VBoxContainer/LineEdit"
 
 var quiz_items = [
 	# --- Sorting Numbers ---

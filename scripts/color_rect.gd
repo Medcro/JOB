@@ -1,8 +1,8 @@
 extends ColorRect
 
 var vignette_material : ShaderMaterial
-@onready var clickable: Clickable = $"../../paper/Clickable"
-@onready var clickable2: Clickable = $"../../paper2/Clickable"
+@onready var clickable: Clickable = $"../../Environment/PaperQuestion/Clickable"
+@onready var clickable2: Clickable = $"../../Environment/PaperAnswer/Clickable2"
 
 var pulse_tween: Tween
 
