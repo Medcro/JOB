@@ -154,15 +154,4 @@ value = 100.0
 
 [node name="QTETimer" type="Timer" parent="CanvasLayer/QTE" unique_id=1669069871]
 
-[node name="QuizUI" type="CanvasLayer" parent="." unique_id=1162419210]
-visible = false
-
-[node name="Background" type="ColorRect" parent="QuizUI" unique_id=1233474723]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.2509804)
-
 [connection signal="timeout" from="CanvasLayer/QTE/QTETimer" to="." method="_on_qte_timer_timeout"]
