@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bohjphj6soppr"]
 
 [ext_resource type="Script" uid="uid://bnjgwvighbre8" path="res://scripts/game.gd" id="1_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://bvxodu8v2sfvn" path="res://scenes/paper.tscn" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://dw4j18qekh7nd" path="res://scenes/clickable.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://bvxodu8v2sfvn" path="res://scenes/Game/paper.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dw4j18qekh7nd" path="res://scenes/Game/clickable.tscn" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://qr3ba3a7whe1" path="res://assets/pure/Pure-1.png" id="2_rysoc"]
-[ext_resource type="Shader" uid="uid://x6baa18wdqj" path="res://scenes/vignete.gdshader" id="3_iywne"]
+[ext_resource type="Shader" uid="uid://x6baa18wdqj" path="res://scenes/Game/vignete.gdshader" id="3_iywne"]
 [ext_resource type="Texture2D" uid="uid://2am4mwpubw57" path="res://assets/pure/Pure-4.png" id="3_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://dop6defo0ta7q" path="res://assets/pure/Pure-3.png" id="3_kvuet"]
 [ext_resource type="Texture2D" uid="uid://126r74ffb8ac" path="res://assets/pure/AddBelowLight,AboveTable.png" id="3_ssvqc"]
@@ -13,10 +13,10 @@
 [ext_resource type="Script" uid="uid://db2ct1gggghjh" path="res://scripts/camera.gd" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bh5x68312s534" path="res://assets/pure/Pure-5.png" id="5_trtic"]
 [ext_resource type="Script" uid="uid://fsd501mxan24" path="res://scripts/color_rect.gd" id="6_p57ef"]
-[ext_resource type="PackedScene" uid="uid://dwjmyrmt6e7tb" path="res://scenes/sanity_bar.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://dwjmyrmt6e7tb" path="res://scenes/Game/sanity_bar.tscn" id="7_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://bpcjt78cng2kq" path="res://assets/pure/Pure-6.png" id="8_1kice"]
-[ext_resource type="PackedScene" uid="uid://d05dbwphfwsif" path="res://scenes/timer.tscn" id="8_gee14"]
-[ext_resource type="PackedScene" uid="uid://1xigkl6nyh6k" path="res://scenes/qte.tscn" id="9_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://d05dbwphfwsif" path="res://scenes/Game/timer.tscn" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://1xigkl6nyh6k" path="res://scenes/Game/qte.tscn" id="9_0tnpc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtaks"]
 
