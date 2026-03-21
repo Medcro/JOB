@@ -15,7 +15,7 @@ func _ready() -> void:
 	timer.one_shot = true
 	timer.timeout.connect(_on_timer_timeout)
 
-func _process(_delta):
+func _process(delta):
 	if Input.is_action_just_pressed("ui_accept") and hasPlayed:
 		close_paper()
 

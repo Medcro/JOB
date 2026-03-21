@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="J*B"
-run/main_scene="uid://bohjphj6soppr"
+run/main_scene="uid://b130k0oqrml04"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://d2hog3ovduhl"
 
 [display]
 

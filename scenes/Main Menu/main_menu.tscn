@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://b130k0oqrml04"]
+
+[ext_resource type="Script" uid="uid://cm5kic2xdokbw" path="res://scenes/Main Menu/main_menu.gd" id="1_1o70l"]
+[ext_resource type="Texture2D" uid="uid://cepht50mlunr6" path="res://assets/Main Menu/Opening_Screen.jpg" id="2_iscfu"]
+[ext_resource type="FontFile" uid="uid://4ay0kbsbegnp" path="res://assets/Fonts/lucidity-psych.ttf" id="3_3e4a6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xleg7"]
+texture = ExtResource("2_iscfu")
+
+[node name="Main Menu" type="Control" unique_id=1858939121]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1o70l")
+
+[node name="BG" type="PanelContainer" parent="." unique_id=930120262]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xleg7")
+
+[node name="Button Container" type="VBoxContainer" parent="." unique_id=1776897819]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 358.0
+offset_right = 249.0
+offset_bottom = 678.0
+theme_override_constants/separation = 8
+
+[node name="Normal" type="Button" parent="Button Container" unique_id=1131004619]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.61627847, 2.0455568e-06, 4.3317675e-07, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("3_3e4a6")
+theme_override_font_sizes/font_size = 65
+text = "Normal"
+flat = true
+alignment = 0
+
+[node name="Endless" type="Button" parent="Button Container" unique_id=390335624]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.6156863, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.50376785, 0.5037688, 0.503768, 0.5019608)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("3_3e4a6")
+theme_override_font_sizes/font_size = 65
+text = "Endless"
+flat = true
+alignment = 0
+
+[node name="Settings" type="Button" parent="Button Container" unique_id=835271951]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.6156863, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("3_3e4a6")
+theme_override_font_sizes/font_size = 65
+text = "Settings"
+flat = true
+alignment = 0
+
+[node name="Exit" type="Button" parent="Button Container" unique_id=438203020]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.6156863, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("3_3e4a6")
+theme_override_font_sizes/font_size = 65
+text = "Exit"
+flat = true
+alignment = 0
+
+[node name="Game Title" type="Label" parent="." unique_id=665988146]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 105.0
+offset_right = 489.0
+offset_bottom = 292.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -15
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("3_3e4a6")
+theme_override_font_sizes/font_size = 100
+text = "Tell Me More
+About Yourself"
+
+[connection signal="pressed" from="Button Container/Normal" to="." method="_on_normal_pressed"]
+[connection signal="pressed" from="Button Container/Endless" to="." method="_on_endless_pressed"]
+[connection signal="pressed" from="Button Container/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Button Container/Exit" to="." method="_on_exit_pressed"]

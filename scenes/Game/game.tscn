@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bohjphj6soppr"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://bnjgwvighbre8" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bvxodu8v2sfvn" path="res://scenes/Game/paper.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://dw4j18qekh7nd" path="res://scenes/Game/clickable.tscn" id="2_lnu2h"]
@@ -19,6 +20,18 @@
 [ext_resource type="PackedScene" uid="uid://1xigkl6nyh6k" path="res://scenes/Game/qte.tscn" id="9_0tnpc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtaks"]
+=======
+[ext_resource type="Script" uid="uid://bnjgwvighbre8" path="res://scripts/game.gd" id="1_ph5vl"]
+[ext_resource type="Script" uid="uid://db2ct1gggghjh" path="res://scripts/camera.gd" id="2_5rpqn"]
+[ext_resource type="PackedScene" uid="uid://bvxodu8v2sfvn" path="res://scenes/Game/paper.tscn" id="3_yvoo5"]
+[ext_resource type="PackedScene" uid="uid://dw4j18qekh7nd" path="res://scenes/Game/clickable.tscn" id="4_y7cus"]
+[ext_resource type="Script" uid="uid://sr5dfic541p7" path="res://scripts/question_list.gd" id="5_wg16f"]
+[ext_resource type="Shader" uid="uid://x6baa18wdqj" path="res://scenes/Game/vignete.gdshader" id="6_u6w8h"]
+[ext_resource type="Script" uid="uid://fsd501mxan24" path="res://scripts/color_rect.gd" id="7_ssgoc"]
+[ext_resource type="PackedScene" uid="uid://dwjmyrmt6e7tb" path="res://scenes/Game/sanity_bar.tscn" id="8_cueac"]
+[ext_resource type="PackedScene" uid="uid://d05dbwphfwsif" path="res://scenes/Game/timer.tscn" id="9_r8o54"]
+[ext_resource type="PackedScene" uid="uid://1xigkl6nyh6k" path="res://scenes/Game/qte.tscn" id="10_rsxsa"]
+>>>>>>> menu_and_settings
 
 [sub_resource type="Animation" id="Animation_yqjtg"]
 length = 0.001
@@ -87,12 +100,12 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p57ef"]
-shader = ExtResource("3_iywne")
+shader = ExtResource("6_u6w8h")
 shader_parameter/outerRadius = 1.0
 shader_parameter/MainAlpha = 0.0
 
 [node name="game" type="Node2D" unique_id=667005455]
-script = ExtResource("1_lnu2h")
+script = ExtResource("1_ph5vl")
 
 [node name="Timer" type="Timer" parent="." unique_id=506356345]
 one_shot = true
@@ -154,18 +167,37 @@ texture = ExtResource("8_1kice")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=383754331 node_paths=PackedStringArray("player")]
 position = Vector2(1, 2)
 offset = Vector2(-5, -5)
+<<<<<<< HEAD
 zoom = Vector2(1.05, 1.05)
 script = ExtResource("4_lbhrr")
 player = NodePath("..")
 mouse_weight = 0.15
+=======
+script = ExtResource("2_5rpqn")
+player = NodePath("..")
+
+[node name="paper" parent="." unique_id=943171573 instance=ExtResource("3_yvoo5")]
+position = Vector2(-211, 91)
+
+[node name="Clickable" parent="paper" unique_id=1598772029 instance=ExtResource("4_y7cus")]
+target = "paper1"
+
+[node name="paper2" parent="." unique_id=958297935 instance=ExtResource("3_yvoo5")]
+modulate = Color(0.66306937, 0.29815155, 0.049263135, 1)
+position = Vector2(206, 91)
+
+[node name="Clickable" parent="paper2" unique_id=723641548 instance=ExtResource("4_y7cus")]
+target = "paper2"
+>>>>>>> menu_and_settings
 
 [node name="Papers" type="Node2D" parent="." unique_id=1468538940]
-script = ExtResource("3_vtaks")
+script = ExtResource("5_wg16f")
 
-[node name="paper1" parent="Papers" unique_id=313447067 instance=ExtResource("1_yqjtg")]
+[node name="paper1" parent="Papers" unique_id=313447067 instance=ExtResource("3_yvoo5")]
 position = Vector2(604, 1016.00006)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Papers/paper1" unique_id=1023672649]
+<<<<<<< HEAD
 offset_left = -217.0
 offset_top = -218.00006
 offset_right = 212.0
@@ -185,8 +217,18 @@ theme_override_font_sizes/font_size = 32
 text = "Question Paper"
 
 [node name="paper2" parent="Papers" unique_id=1876787906 instance=ExtResource("1_yqjtg")]
+=======
+offset_left = -53.047318
+offset_top = -57.369293
+offset_right = -13.0473175
+offset_bottom = -17.369293
+metadata/_edit_use_anchors_ = true
+
+[node name="paper2" parent="Papers" unique_id=1876787906 instance=ExtResource("3_yvoo5")]
+>>>>>>> menu_and_settings
 position = Vector2(592, 1010.00006)
 
+<<<<<<< HEAD
 [node name="Label" type="Label" parent="Papers/paper2" unique_id=1332162234]
 offset_left = -106.0
 offset_top = -250.00006
@@ -209,6 +251,15 @@ offset_right = 84.0
 offset_bottom = 31.999939
 text = "submit"
 
+=======
+[node name="VBoxContainer" type="VBoxContainer" parent="Papers/paper2" unique_id=500226139]
+offset_left = -58.663086
+offset_top = -57.385498
+offset_right = -18.663086
+offset_bottom = -17.385498
+metadata/_edit_use_anchors_ = true
+
+>>>>>>> menu_and_settings
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1679553784]
 libraries/ = SubResource("AnimationLibrary_lbhrr")
 
@@ -222,18 +273,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("6_p57ef")
+script = ExtResource("7_ssgoc")
 
-[node name="SanityBar" parent="CanvasLayer" unique_id=1955015580 instance=ExtResource("7_u5sy4")]
+[node name="SanityBar" parent="CanvasLayer" unique_id=1955015580 instance=ExtResource("8_cueac")]
 step = 0.1
 value = 100.0
 
-[node name="Timer" parent="CanvasLayer" unique_id=1206630171 instance=ExtResource("8_gee14")]
+[node name="Timer" parent="CanvasLayer" unique_id=1206630171 instance=ExtResource("9_r8o54")]
 
-[node name="QTE" parent="CanvasLayer" unique_id=501056554 instance=ExtResource("9_0tnpc")]
+[node name="QTE" parent="CanvasLayer" unique_id=501056554 instance=ExtResource("10_rsxsa")]
 
 [node name="QTETimer" type="Timer" parent="CanvasLayer/QTE" unique_id=1669069871]
 
+<<<<<<< HEAD
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Papers/paper2/SubmitButton" to="Papers" method="_on_submit_button_pressed"]
+=======
+>>>>>>> menu_and_settings
 [connection signal="timeout" from="CanvasLayer/QTE/QTETimer" to="." method="_on_qte_timer_timeout"]

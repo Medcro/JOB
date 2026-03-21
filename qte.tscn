@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cba2nwm2l552v"]
+
+[ext_resource type="Texture2D" uid="uid://lt7madowgpa" path="res://assets/BarQTE.tres" id="1_8viod"]
+[ext_resource type="Script" uid="uid://bqpea0twnakgr" path="res://scripts/qte.gd" id="1_ccpps"]
+[ext_resource type="Texture2D" uid="uid://b1oc7xxvdimq4" path="res://assets/SuccessZone.tres" id="2_ccpps"]
+[ext_resource type="Texture2D" uid="uid://bux6513g0ieab" path="res://assets/needle.tres" id="3_no7xx"]
+
+[node name="QTE" type="Control" unique_id=304952963]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ccpps")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1478655682]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 325.99997
+offset_right = 2167.0
+offset_bottom = 614.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_8viod")
+
+[node name="SuccessZone" type="TextureRect" parent="Background" unique_id=1049970999]
+layout_mode = 0
+offset_left = 200.0
+offset_right = 482.0
+offset_bottom = 284.0
+texture = ExtResource("2_ccpps")
+
+[node name="Needle" type="TextureRect" parent="Background" unique_id=890401111]
+layout_mode = 0
+offset_top = -113.0
+offset_right = 137.0
+offset_bottom = 441.0
+texture = ExtResource("3_no7xx")
