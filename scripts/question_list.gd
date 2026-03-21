@@ -3,6 +3,8 @@ extends Node2D
 @onready var question_label = $paper1/VBoxContainer/Label
 @onready var answer_input = $paper2/LineEdit
 @export var max_correct = 15
+@onready var correct: AudioStreamPlayer = $"../Audio/Correct"
+@onready var wrong: AudioStreamPlayer = $"../Audio/Wrong"
 
 signal answer_correct
 signal win_condition
@@ -110,7 +112,7 @@ func update_ui():
 	if current_question_index < quiz_items.size():
 		var data = quiz_items[current_question_index]
 		question_label.text = data["q"]
-		answer_input.text = "" 
+		
 		answer_input.modulate = Color.WHITE
 		answer_input.grab_focus()
 	else:
@@ -127,11 +129,15 @@ func _on_answer_submitted(submitted_text: String):
 	var real_ans = correct_ans_raw.to_lower().replace(" ", "")
 
 	if user_ans == real_ans:
+		correct.play()
 		print("Correct!")
 		current_question_index += 1
+		answer_input.text = "" 
+		
 		answer_correct.emit()
 		update_ui()
 	else:
+		wrong.play()
 		print("Wrong! Correct was: ", correct_ans_raw)
 		answer_input.modulate = Color.RED
 		await get_tree().create_timer(0.4).timeout

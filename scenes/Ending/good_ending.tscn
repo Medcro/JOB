@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://b1yeobyl1w87y" path="res://assets/Good Ending/GoodEnding1.jpg" id="1_md2hi"]
 [ext_resource type="Script" uid="uid://do0uhsnsiu6rj" path="res://scenes/Ending/good_ending.gd" id="1_qfqgo"]
 [ext_resource type="FontFile" uid="uid://4ay0kbsbegnp" path="res://assets/Fonts/lucidity-psych.ttf" id="3_gf1ce"]
+[ext_resource type="AudioStream" uid="uid://by58c6imkd5xb" path="res://assets/audio/Button_Hover.wav" id="4_bmdng"]
+[ext_resource type="AudioStream" uid="uid://d21y6tb7u1lhl" path="res://assets/audio/Button_Select.wav" id="5_2uuog"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gf1ce"]
 
@@ -49,9 +51,9 @@ text = "You Got Accepted!"
 
 [node name="EndButton" type="Button" parent="Control" unique_id=1828385594]
 layout_mode = 0
-offset_left = 36.0
+offset_left = 25.0
 offset_top = 637.0
-offset_right = 169.0
+offset_right = 158.0
 offset_bottom = 746.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.6156863, 0, 0, 1)
@@ -69,9 +71,9 @@ text = "<End"
 
 [node name="ContinueButton" type="Button" parent="Control" unique_id=1888292563]
 layout_mode = 0
-offset_left = 726.0
+offset_left = 707.0
 offset_top = 637.0
-offset_right = 1018.0
+offset_right = 999.0
 offset_bottom = 746.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.6156863, 0, 0, 1)
@@ -87,5 +89,15 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_2uuog")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_u3n74")
 text = "Continue?>"
 
+[node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=761871011]
+stream = ExtResource("4_bmdng")
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="." unique_id=828548769]
+stream = ExtResource("5_2uuog")
+
 [connection signal="button_up" from="Control/EndButton" to="." method="_on_end_button_button_up"]
+[connection signal="mouse_entered" from="Control/EndButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Control/EndButton" to="." method="_on_button_pressed"]
 [connection signal="button_up" from="Control/ContinueButton" to="." method="_on_continue_button_button_up"]
+[connection signal="mouse_entered" from="Control/ContinueButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Control/ContinueButton" to="." method="_on_button_pressed"]

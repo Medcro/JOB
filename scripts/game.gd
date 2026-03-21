@@ -17,6 +17,9 @@ extends Node2D
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var clickable_2: Clickable = $Environment/PaperAnswer/Clickable2
 @onready var clickable: Clickable = $Environment/PaperQuestion/Clickable
+@onready var heartbeat: AudioStreamPlayer = $Audio/Heartbeat
+@onready var sanity_up: AudioStreamPlayer = $Audio/SanityUp
+@onready var sanity_down: AudioStreamPlayer = $Audio/SanityDown
 
 var sanity : float = 100.0 
 var drain_rate : float = 1.0
@@ -44,12 +47,17 @@ func _process(delta):
 			game_over = true
 			bad_ending()
 		
+		if sanity > 100:
+			sanity = 100
+		
 func start_random_timer_qte():
 	var random_wait = randf_range(5.0, 15.0) 
 	qte_timer.wait_time = random_wait
 	qte_timer.start()
 
 func _on_qte_timer_timeout() -> void:
+	heartbeat.play()
+	await get_tree().create_timer(3.0).timeout
 	qte.show() 
 	qte.start_new_round()
 	
@@ -78,9 +86,11 @@ func change_environment():
 	
 func decrease_sanity():
 	sanity -= 20
+	sanity_down.play()
 
 func increase_sanity():
 	sanity += 10
+	sanity_up.play()
 
 func bad_ending():
 	canvas_layer.visible = false

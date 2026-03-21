@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dw4j18qekh7nd"]
 
 [ext_resource type="Script" uid="uid://bvh63qpmdm2sj" path="res://scripts/clickable.gd" id="1_i5j3f"]
+[ext_resource type="AudioStream" uid="uid://v60o36d71psj" path="res://assets/audio/Paper_PageFlip.wav" id="2_1xmdy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ur3sy"]
 size = Vector2(99, 124)
@@ -12,5 +13,9 @@ script = ExtResource("1_i5j3f")
 shape = SubResource("RectangleShape2D_ur3sy")
 
 [node name="Timer" type="Timer" parent="." unique_id=833408610]
+
+[node name="PageSound" type="AudioStreamPlayer" parent="." unique_id=997043087]
+stream = ExtResource("2_1xmdy")
+bus = &"SFX"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

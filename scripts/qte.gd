@@ -47,6 +47,7 @@ func evaluate_hit():
 		current_successes += 1
 		
 		if current_successes == required_successes:
+			qte_success.emit()
 			finished()
 		else:
 			print(current_successes)

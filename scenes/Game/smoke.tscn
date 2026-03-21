@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d1ncswvs6folq" path="res://assets/Black Smog.png" id="1_hwiwx"]
 [ext_resource type="Script" uid="uid://bv3sofmjlcsft" path="res://scripts/smoke.gd" id="2_ru7lk"]
+[ext_resource type="AudioStream" uid="uid://ct4uvgogpy2xw" path="res://assets/audio/Paper_Submit.wav" id="3_vxcwh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ru7lk"]
 radius = 12.663899
@@ -16,5 +17,9 @@ script = ExtResource("2_ru7lk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1055248607]
 scale = Vector2(-81.18663, 68.873024)
 shape = SubResource("CircleShape2D_ru7lk")
+
+[node name="Pop" type="AudioStreamPlayer" parent="." unique_id=1682987194]
+stream = ExtResource("3_vxcwh")
+volume_db = -12.0
 
 [connection signal="input_event" from="Area2D" to="." method="_on_input_event"]

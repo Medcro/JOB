@@ -18,6 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://d05dbwphfwsif" path="res://scenes/Game/timer.tscn" id="15_fv21b"]
 [ext_resource type="PackedScene" uid="uid://dw4j18qekh7nd" path="res://scenes/Game/clickable.tscn" id="16_tel4y"]
 [ext_resource type="PackedScene" uid="uid://1xigkl6nyh6k" path="res://scenes/Game/qte.tscn" id="17_erk5d"]
+[ext_resource type="AudioStream" uid="uid://bon2wadmenra8" path="res://assets/audio/SFX_Heartbeat.wav" id="19_rlgms"]
+[ext_resource type="AudioStream" uid="uid://dtkytyfvl2d3c" path="res://assets/audio/SFX_SanityUp.wav" id="20_vtn36"]
+[ext_resource type="AudioStream" uid="uid://bbltjqtjakiud" path="res://assets/audio/SFX_SanityDown.wav" id="21_bm4w7"]
+[ext_resource type="AudioStream" uid="uid://002171ey84bp" path="res://assets/audio/Paper_CorrectAnswer.wav" id="22_bm4w7"]
+[ext_resource type="AudioStream" uid="uid://c4g5xqobhokmy" path="res://assets/audio/Paper_WrongAnswer.wav" id="23_js07o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qkpxi"]
 
@@ -159,7 +164,7 @@ offset = Vector2(-5, -5)
 zoom = Vector2(1.05, 1.05)
 script = ExtResource("9_y6deb")
 player = NodePath("..")
-mouse_weight = 0.15
+mouse_weight = 0.125
 
 [node name="Papers" type="Node2D" parent="." unique_id=862591579]
 script = ExtResource("10_og1vs")
@@ -235,6 +240,28 @@ value = 100.0
 
 [node name="QTETimer" type="Timer" parent="CanvasLayer/QTE" unique_id=1796134119]
 one_shot = true
+
+[node name="Audio" type="Node" parent="." unique_id=1960565496]
+
+[node name="Heartbeat" type="AudioStreamPlayer" parent="Audio" unique_id=1616939513]
+stream = ExtResource("19_rlgms")
+bus = &"SFX"
+
+[node name="SanityUp" type="AudioStreamPlayer" parent="Audio" unique_id=1764430570]
+stream = ExtResource("20_vtn36")
+bus = &"SFX"
+
+[node name="SanityDown" type="AudioStreamPlayer" parent="Audio" unique_id=2084985116]
+stream = ExtResource("21_bm4w7")
+bus = &"SFX"
+
+[node name="Correct" type="AudioStreamPlayer" parent="Audio" unique_id=1524655900]
+stream = ExtResource("22_bm4w7")
+bus = &"SFX"
+
+[node name="Wrong" type="AudioStreamPlayer" parent="Audio" unique_id=983540145]
+stream = ExtResource("23_js07o")
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Papers/paper2/SubmitButton" to="Papers" method="_on_submit_button_pressed"]

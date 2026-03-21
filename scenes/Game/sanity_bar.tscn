@@ -6,9 +6,9 @@
 
 [node name="SanityBar" type="TextureProgressBar" unique_id=672946405]
 offset_left = 7.0
-offset_top = 2.0
-offset_right = 170.0
-offset_bottom = 1240.0
+offset_top = 156.99998
+offset_right = 179.0
+offset_bottom = 1395.0
 scale = Vector2(0.4, 0.4)
 value = 90.0
 rounded = true

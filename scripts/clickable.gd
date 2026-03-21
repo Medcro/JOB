@@ -6,6 +6,7 @@ static var is_any_paper_active : bool = false
 @onready var anim: AnimationPlayer = $"../../../AnimationPlayer"
 @onready var timer: Timer = $Timer
 @onready var papers = $"../../../Papers"
+@onready var page_sound: AudioStreamPlayer = $PageSound
 
 var hasPlayed : bool = false 
 signal timer_timeout
@@ -25,6 +26,7 @@ func _on_input_event(_viewport, event, _shape_idx):
 			open_paper()
 
 func open_paper():
+	page_sound.play()
 	papers.update_ui()
 	
 	Clickable.is_any_paper_active = true
@@ -35,6 +37,9 @@ func open_paper():
 	timer.start()
 
 func close_paper():
+	page_sound.play()
+	if papers and papers.get("answer_input"):
+		papers.answer_input.release_focus()
 	anim.play_backwards(target)
 	await get_tree().create_timer(0.3).timeout
 	hasPlayed = false
