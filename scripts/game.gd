@@ -12,6 +12,7 @@ extends Node2D
 @onready var paper_answer: Sprite2D = $Environment/PaperAnswer
 @onready var paper_question: Sprite2D = $Environment/PaperQuestion
 @onready var lamp: Sprite2D = $Environment/Lamp
+@onready var papers: Node2D = $Papers
 
 var sanity : float = 100.0 
 var drain_rate : float = 1.0
@@ -20,6 +21,8 @@ func _ready():
 	qte.hide()
 	qte.qte_finished.connect(start_random_timer_qte)
 	qte.qte_failed.connect(decrease_sanity)
+	qte.qte_success.connect(increase_sanity)
+	papers.answer_correct.connect(increase_sanity)
 	start_random_timer()
 	sanity_bar.max_value = 100
 	start_random_timer_qte()
@@ -60,3 +63,6 @@ func change_environment():
 	
 func decrease_sanity():
 	sanity -= 20
+
+func increase_sanity():
+	sanity += 10

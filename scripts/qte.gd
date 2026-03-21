@@ -4,6 +4,7 @@ extends Control
 @onready var success_zone = $Background/SuccessZone
 @onready var needle = $Background/Needle
 
+signal qte_success
 signal qte_finished
 signal qte_failed
 
@@ -48,6 +49,7 @@ func evaluate_hit():
 			finished()
 		else:
 			print(current_successes)
+			qte_success.emit()
 			await get_tree().create_timer(0.5).timeout
 			start_new_round()
 			

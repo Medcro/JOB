@@ -154,9 +154,10 @@ texture = ExtResource("8_1kice")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=383754331 node_paths=PackedStringArray("player")]
 position = Vector2(1, 2)
 offset = Vector2(-5, -5)
-zoom = Vector2(0.9, 0.9)
+zoom = Vector2(1.05, 1.05)
 script = ExtResource("4_lbhrr")
 player = NodePath("..")
+mouse_weight = 0.15
 
 [node name="Papers" type="Node2D" parent="." unique_id=1468538940]
 script = ExtResource("3_vtaks")
@@ -166,32 +167,46 @@ position = Vector2(604, 1016.00006)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Papers/paper1" unique_id=1023672649]
 offset_left = -217.0
-offset_top = -287.0
+offset_top = -218.00006
 offset_right = 212.0
-offset_bottom = 304.0
+offset_bottom = 372.99994
 
 [node name="Label" type="Label" parent="Papers/paper1/VBoxContainer" unique_id=912235864]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 28
 autowrap_mode = 2
+
+[node name="Label" type="Label" parent="Papers/paper1" unique_id=1039517847]
+offset_left = -129.0
+offset_top = -282.00006
+offset_right = 111.0
+offset_bottom = -237.00006
+theme_override_font_sizes/font_size = 32
+text = "Question Paper"
 
 [node name="paper2" parent="Papers" unique_id=1876787906 instance=ExtResource("1_yqjtg")]
 position = Vector2(592, 1010.00006)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Papers/paper2" unique_id=500226139]
-offset_left = -165.99998
-offset_top = -217.00005
-offset_right = -97.999985
-offset_bottom = -125.000046
-scale = Vector2(5, 5)
-theme_override_constants/separation = 10
-metadata/_edit_use_anchors_ = true
+[node name="Label" type="Label" parent="Papers/paper2" unique_id=1332162234]
+offset_left = -106.0
+offset_top = -250.00006
+offset_right = 105.0
+offset_bottom = -205.00006
+theme_override_font_sizes/font_size = 32
+text = "Answer Sheet"
 
-[node name="LineEdit" type="LineEdit" parent="Papers/paper2/VBoxContainer" unique_id=1776344019]
-layout_mode = 2
+[node name="LineEdit" type="LineEdit" parent="Papers/paper2" unique_id=1776344019]
+offset_left = -166.0
+offset_top = -154.00006
+offset_right = 171.0
+offset_bottom = -96.00006
+theme_override_font_sizes/font_size = 28
 
-[node name="SubmitButton" type="Button" parent="Papers/paper2/VBoxContainer" unique_id=1792986692]
-layout_mode = 2
+[node name="SubmitButton" type="Button" parent="Papers/paper2" unique_id=1792986692]
+offset_left = -89.0
+offset_top = -56.00006
+offset_right = 84.0
+offset_bottom = 31.999939
 text = "submit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1679553784]
@@ -220,5 +235,5 @@ value = 100.0
 [node name="QTETimer" type="Timer" parent="CanvasLayer/QTE" unique_id=1669069871]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="Papers/paper2/VBoxContainer/SubmitButton" to="Environment/PaperQuestion/Clickable" method="_on_submit_button_pressed"]
+[connection signal="pressed" from="Papers/paper2/SubmitButton" to="Papers" method="_on_submit_button_pressed"]
 [connection signal="timeout" from="CanvasLayer/QTE/QTETimer" to="." method="_on_qte_timer_timeout"]
