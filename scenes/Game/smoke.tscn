@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://d3h04mlgnfmao"]
+
+[ext_resource type="Texture2D" uid="uid://d1ncswvs6folq" path="res://assets/Black Smog.png" id="1_hwiwx"]
+[ext_resource type="Script" uid="uid://bv3sofmjlcsft" path="res://scripts/smoke.gd" id="2_ru7lk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ru7lk"]
+radius = 12.663899
+
+[node name="Smoke" type="Sprite2D" unique_id=474303829 groups=["Smokes"]]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_hwiwx")
+script = ExtResource("2_ru7lk")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=877172820]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1055248607]
+scale = Vector2(-81.18663, 68.873024)
+shape = SubResource("CircleShape2D_ru7lk")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_input_event"]

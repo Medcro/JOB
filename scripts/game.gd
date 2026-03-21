@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var smoke: PackedScene
 @onready var sanity_bar = $CanvasLayer/SanityBar
 @onready var qte: Control = $CanvasLayer/QTE
 @onready var qte_timer: Timer = $CanvasLayer/QTE/QTETimer
@@ -20,6 +21,7 @@ extends Node2D
 var sanity : float = 100.0 
 var drain_rate : float = 1.0
 var game_over : bool = false
+var isRed : bool = false
 
 func _ready():
 	qte.hide()
@@ -31,6 +33,7 @@ func _ready():
 	start_random_timer()
 	sanity_bar.max_value = 100
 	start_random_timer_qte()
+	spawn_random_sprite()
 
 func _process(delta):
 	if not game_over:
@@ -52,11 +55,17 @@ func _on_qte_timer_timeout() -> void:
 	
 func start_random_timer():
 	var wait_time = randf_range(10.0, 30.0)
+	print("starting time ", wait_time)
 	timer.start(wait_time)
 
 func _on_timer_timeout():
-	print("timeoutQ")
-	change_environment()
+	if isRed:
+		print("spawn")
+		spawn_random_sprite()
+	else:
+		change_environment()
+		isRed = true
+	start_random_timer()
 
 func change_environment():
 	background.texture = load("res://assets/red/Red-1.png")
@@ -89,7 +98,7 @@ func bad_ending():
 	shake_sprite(person)
 	await get_tree().create_timer(4.0).timeout
 	GlobalData.bad_ehding = true
-	#save
+	SaveManager.save_game()
 	get_tree().change_scene_to_file("res://scenes/Main Menu/main_menu.tscn")
 
 func good_ending():
@@ -104,3 +113,35 @@ func shake_sprite(sprite: Sprite2D, intensity: float = 5.0, duration: float = 3.
 		var drift_pos = original_pos + Vector2(randf_range(-intensity, intensity), randf_range(-intensity, intensity))
 		tween.tween_property(sprite, "position", drift_pos, duration / 8.0)
 		tween.tween_property(sprite, "position", original_pos, duration / 8.0)
+		
+func spawn_random_sprite():
+	if smoke == null:
+		return
+	var screen_size = get_viewport_rect().size
+	
+	var random_x = randf_range(-screen_size.x/2, screen_size.x/2)
+	var random_y = randf_range(-screen_size.y/2, screen_size.y/700)
+	
+	var new_sprite = smoke.instantiate()
+	new_sprite.global_position = Vector2(random_x, random_y)
+	
+	new_sprite.tree_exited.connect(_on_smoke_cleared)
+	
+	add_child(new_sprite)
+	print("spawn at ", random_x, ", ", random_y)
+	
+	drain_rate = 2.0
+
+func _on_smoke_cleared():
+	if game_over:
+		return
+	
+	if get_tree() == null:
+		return
+		
+	await get_tree().process_frame 
+	
+	var smokes_left = get_tree().get_nodes_in_group("Smokes").size()
+	
+	if smokes_left == 0:
+		drain_rate = 1.0

@@ -69,9 +69,9 @@ text = "<End"
 
 [node name="ContinueButton" type="Button" parent="Control" unique_id=1888292563]
 layout_mode = 0
-offset_left = 748.0
+offset_left = 726.0
 offset_top = 637.0
-offset_right = 1007.0
+offset_right = 1018.0
 offset_bottom = 746.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.6156863, 0, 0, 1)
@@ -85,7 +85,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_gsynk")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_bmdng")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_2uuog")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_u3n74")
-text = "Continue>"
+text = "Continue?>"
 
 [connection signal="button_up" from="Control/EndButton" to="." method="_on_end_button_button_up"]
 [connection signal="button_up" from="Control/ContinueButton" to="." method="_on_continue_button_button_up"]

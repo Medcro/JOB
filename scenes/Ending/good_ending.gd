@@ -4,7 +4,7 @@ extends Node2D
 
 func _ready() -> void:
 	GlobalData.good_ending = true
-	#save
+	SaveManager.save_game()
 	control.visible = false
 	await get_tree().create_timer(3.0).timeout
 	texture_rect.texture = load("res://assets/Good Ending/GoodEnding2.jpg")
