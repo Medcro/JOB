@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dyqmp1qgx8xmi"]
+
+[node name="PaperQuestion" type="Control" unique_id=1640619194]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="QuestionList" type="VBoxContainer" parent="." unique_id=1480966614]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

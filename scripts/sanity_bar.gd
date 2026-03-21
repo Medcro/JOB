@@ -1,4 +1,4 @@
-extends ProgressBar
+extends TextureProgressBar
 
 var drain_rate_per_second : float = 1.0
 

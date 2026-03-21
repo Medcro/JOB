@@ -1,0 +1,293 @@
+[gd_scene format=3 uid="uid://bohjphj6soppr"]
+
+<<<<<<< HEAD
+[ext_resource type="Script" uid="uid://bnjgwvighbre8" path="res://scripts/game.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://bvxodu8v2sfvn" path="res://scenes/Game/paper.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dw4j18qekh7nd" path="res://scenes/Game/clickable.tscn" id="2_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://qr3ba3a7whe1" path="res://assets/pure/Pure-1.png" id="2_rysoc"]
+[ext_resource type="Shader" uid="uid://x6baa18wdqj" path="res://scenes/Game/vignete.gdshader" id="3_iywne"]
+[ext_resource type="Texture2D" uid="uid://2am4mwpubw57" path="res://assets/pure/Pure-4.png" id="3_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://dop6defo0ta7q" path="res://assets/pure/Pure-3.png" id="3_kvuet"]
+[ext_resource type="Texture2D" uid="uid://126r74ffb8ac" path="res://assets/pure/AddBelowLight,AboveTable.png" id="3_ssvqc"]
+[ext_resource type="Script" uid="uid://sr5dfic541p7" path="res://scripts/question_list.gd" id="3_vtaks"]
+[ext_resource type="Texture2D" uid="uid://ckxnyysrnjke" path="res://assets/pure/Pure-2.png" id="4_264po"]
+[ext_resource type="Script" uid="uid://db2ct1gggghjh" path="res://scripts/camera.gd" id="4_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://bh5x68312s534" path="res://assets/pure/Pure-5.png" id="5_trtic"]
+[ext_resource type="Script" uid="uid://fsd501mxan24" path="res://scripts/color_rect.gd" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://dwjmyrmt6e7tb" path="res://scenes/Game/sanity_bar.tscn" id="7_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://bpcjt78cng2kq" path="res://assets/pure/Pure-6.png" id="8_1kice"]
+[ext_resource type="PackedScene" uid="uid://d05dbwphfwsif" path="res://scenes/Game/timer.tscn" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://1xigkl6nyh6k" path="res://scenes/Game/qte.tscn" id="9_0tnpc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtaks"]
+=======
+[ext_resource type="Script" uid="uid://bnjgwvighbre8" path="res://scripts/game.gd" id="1_ph5vl"]
+[ext_resource type="Script" uid="uid://db2ct1gggghjh" path="res://scripts/camera.gd" id="2_5rpqn"]
+[ext_resource type="PackedScene" uid="uid://bvxodu8v2sfvn" path="res://scenes/Game/paper.tscn" id="3_yvoo5"]
+[ext_resource type="PackedScene" uid="uid://dw4j18qekh7nd" path="res://scenes/Game/clickable.tscn" id="4_y7cus"]
+[ext_resource type="Script" uid="uid://sr5dfic541p7" path="res://scripts/question_list.gd" id="5_wg16f"]
+[ext_resource type="Shader" uid="uid://x6baa18wdqj" path="res://scenes/Game/vignete.gdshader" id="6_u6w8h"]
+[ext_resource type="Script" uid="uid://fsd501mxan24" path="res://scripts/color_rect.gd" id="7_ssgoc"]
+[ext_resource type="PackedScene" uid="uid://dwjmyrmt6e7tb" path="res://scenes/Game/sanity_bar.tscn" id="8_cueac"]
+[ext_resource type="PackedScene" uid="uid://d05dbwphfwsif" path="res://scenes/Game/timer.tscn" id="9_r8o54"]
+[ext_resource type="PackedScene" uid="uid://1xigkl6nyh6k" path="res://scenes/Game/qte.tscn" id="10_rsxsa"]
+>>>>>>> menu_and_settings
+
+[sub_resource type="Animation" id="Animation_yqjtg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Papers/paper1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(604, 1016.00006)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Papers/paper2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(592, 1010.00006)]
+}
+
+[sub_resource type="Animation" id="Animation_lnu2h"]
+resource_name = "paper1_up"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Papers/paper1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(17, 1064), Vector2(17, 53)]
+}
+
+[sub_resource type="Animation" id="Animation_lbhrr"]
+resource_name = "paper2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Papers/paper2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(23, 1068), Vector2(23, 53.000122)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lbhrr"]
+_data = {
+&"RESET": SubResource("Animation_yqjtg"),
+&"paper1": SubResource("Animation_lnu2h"),
+&"paper2": SubResource("Animation_lbhrr")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p57ef"]
+shader = ExtResource("6_u6w8h")
+shader_parameter/outerRadius = 1.0
+shader_parameter/MainAlpha = 0.0
+
+[node name="game" type="Node2D" unique_id=667005455]
+script = ExtResource("1_ph5vl")
+
+[node name="Timer" type="Timer" parent="." unique_id=506356345]
+one_shot = true
+
+[node name="Environment" type="Panel" parent="." unique_id=833964005]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -67.0
+offset_right = 1022.0
+offset_bottom = 709.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vtaks")
+
+[node name="Background" type="Sprite2D" parent="Environment" unique_id=133992559]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_rysoc")
+
+[node name="Light" type="Sprite2D" parent="Environment" unique_id=45816660]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_ssvqc")
+
+[node name="Person" type="Sprite2D" parent="Environment" unique_id=117713599]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_264po")
+
+[node name="Table" type="Sprite2D" parent="Environment" unique_id=1434863153]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_kvuet")
+
+[node name="PaperAnswer" type="Sprite2D" parent="Environment" unique_id=1243149432]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_kvpfn")
+
+[node name="Clickable2" parent="Environment/PaperAnswer" unique_id=723641548 instance=ExtResource("2_lnu2h")]
+position = Vector2(445.71436, 908.5715)
+rotation = -0.066557124
+scale = Vector2(7.352417, 5.975019)
+target = "paper2"
+
+[node name="PaperQuestion" type="Sprite2D" parent="Environment" unique_id=441290709]
+scale = Vector2(0.348, 0.348)
+texture = ExtResource("5_trtic")
+
+[node name="Clickable" parent="Environment/PaperQuestion" unique_id=1598772029 instance=ExtResource("2_lnu2h")]
+position = Vector2(-376.43674, 905.1725)
+rotation = 0.06773302
+scale = Vector2(7.353191, 5.382475)
+target = "paper1"
+
+[node name="Lamp" type="Sprite2D" parent="Environment" unique_id=510646275]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("8_1kice")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=383754331 node_paths=PackedStringArray("player")]
+position = Vector2(1, 2)
+offset = Vector2(-5, -5)
+<<<<<<< HEAD
+zoom = Vector2(1.05, 1.05)
+script = ExtResource("4_lbhrr")
+player = NodePath("..")
+mouse_weight = 0.15
+=======
+script = ExtResource("2_5rpqn")
+player = NodePath("..")
+
+[node name="paper" parent="." unique_id=943171573 instance=ExtResource("3_yvoo5")]
+position = Vector2(-211, 91)
+
+[node name="Clickable" parent="paper" unique_id=1598772029 instance=ExtResource("4_y7cus")]
+target = "paper1"
+
+[node name="paper2" parent="." unique_id=958297935 instance=ExtResource("3_yvoo5")]
+modulate = Color(0.66306937, 0.29815155, 0.049263135, 1)
+position = Vector2(206, 91)
+
+[node name="Clickable" parent="paper2" unique_id=723641548 instance=ExtResource("4_y7cus")]
+target = "paper2"
+>>>>>>> menu_and_settings
+
+[node name="Papers" type="Node2D" parent="." unique_id=1468538940]
+script = ExtResource("5_wg16f")
+
+[node name="paper1" parent="Papers" unique_id=313447067 instance=ExtResource("3_yvoo5")]
+position = Vector2(604, 1016.00006)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Papers/paper1" unique_id=1023672649]
+<<<<<<< HEAD
+offset_left = -217.0
+offset_top = -218.00006
+offset_right = 212.0
+offset_bottom = 372.99994
+
+[node name="Label" type="Label" parent="Papers/paper1/VBoxContainer" unique_id=912235864]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="Papers/paper1" unique_id=1039517847]
+offset_left = -129.0
+offset_top = -282.00006
+offset_right = 111.0
+offset_bottom = -237.00006
+theme_override_font_sizes/font_size = 32
+text = "Question Paper"
+
+[node name="paper2" parent="Papers" unique_id=1876787906 instance=ExtResource("1_yqjtg")]
+=======
+offset_left = -53.047318
+offset_top = -57.369293
+offset_right = -13.0473175
+offset_bottom = -17.369293
+metadata/_edit_use_anchors_ = true
+
+[node name="paper2" parent="Papers" unique_id=1876787906 instance=ExtResource("3_yvoo5")]
+>>>>>>> menu_and_settings
+position = Vector2(592, 1010.00006)
+
+<<<<<<< HEAD
+[node name="Label" type="Label" parent="Papers/paper2" unique_id=1332162234]
+offset_left = -106.0
+offset_top = -250.00006
+offset_right = 105.0
+offset_bottom = -205.00006
+theme_override_font_sizes/font_size = 32
+text = "Answer Sheet"
+
+[node name="LineEdit" type="LineEdit" parent="Papers/paper2" unique_id=1776344019]
+offset_left = -166.0
+offset_top = -154.00006
+offset_right = 171.0
+offset_bottom = -96.00006
+theme_override_font_sizes/font_size = 28
+
+[node name="SubmitButton" type="Button" parent="Papers/paper2" unique_id=1792986692]
+offset_left = -89.0
+offset_top = -56.00006
+offset_right = 84.0
+offset_bottom = 31.999939
+text = "submit"
+
+=======
+[node name="VBoxContainer" type="VBoxContainer" parent="Papers/paper2" unique_id=500226139]
+offset_left = -58.663086
+offset_top = -57.385498
+offset_right = -18.663086
+offset_bottom = -17.385498
+metadata/_edit_use_anchors_ = true
+
+>>>>>>> menu_and_settings
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1679553784]
+libraries/ = SubResource("AnimationLibrary_lbhrr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1097841892]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1876485874]
+material = SubResource("ShaderMaterial_p57ef")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_ssgoc")
+
+[node name="SanityBar" parent="CanvasLayer" unique_id=1955015580 instance=ExtResource("8_cueac")]
+step = 0.1
+value = 100.0
+
+[node name="Timer" parent="CanvasLayer" unique_id=1206630171 instance=ExtResource("9_r8o54")]
+
+[node name="QTE" parent="CanvasLayer" unique_id=501056554 instance=ExtResource("10_rsxsa")]
+
+[node name="QTETimer" type="Timer" parent="CanvasLayer/QTE" unique_id=1669069871]
+
+<<<<<<< HEAD
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Papers/paper2/SubmitButton" to="Papers" method="_on_submit_button_pressed"]
+=======
+>>>>>>> menu_and_settings
+[connection signal="timeout" from="CanvasLayer/QTE/QTETimer" to="." method="_on_qte_timer_timeout"]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dwjmyrmt6e7tb"]
+
+[ext_resource type="Texture2D" uid="uid://bb5o7gblrvlp7" path="res://assets/Bar.tres" id="1_flvp1"]
+[ext_resource type="Script" uid="uid://5fjfeet2n1ve" path="res://scripts/sanity_bar.gd" id="1_vf2p4"]
+[ext_resource type="Texture2D" uid="uid://crgqh3eykt16p" path="res://assets/ProgressBar.tres" id="2_glxqk"]
+
+[node name="SanityBar" type="TextureProgressBar" unique_id=672946405]
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 170.0
+offset_bottom = 1240.0
+scale = Vector2(0.4, 0.4)
+value = 90.0
+rounded = true
+fill_mode = 3
+texture_under = ExtResource("1_flvp1")
+texture_over = ExtResource("1_flvp1")
+texture_progress = ExtResource("2_glxqk")
+script = ExtResource("1_vf2p4")

@@ -4,10 +4,11 @@ extends Control
 @onready var success_zone = $Background/SuccessZone
 @onready var needle = $Background/Needle
 
+signal qte_success
 signal qte_finished
 signal qte_failed
 
-var speed: float = 300.0 
+var speed: float = 800.0
 var is_active: bool = false
 	
 var required_successes: int = 3
@@ -19,7 +20,7 @@ func _process(delta):
 	
 	needle.position.x += speed * delta
 	
-	if needle.position.x > background.size.x:
+	if needle.position.x + 50 > background.size.x:
 		fail_skill_check()
 	
 func _unhandled_input(event):
@@ -41,13 +42,14 @@ func evaluate_hit():
 	var zone_start = success_zone.position.x
 	var zone_end = success_zone.position.x + success_zone.size.x
 	
-	if needle.position.x >= zone_start and needle.position.x <= zone_end:
+	if needle.position.x + 30 >= zone_start and needle.position.x + 30 <= zone_end:
 		current_successes += 1
 		
 		if current_successes == required_successes:
 			finished()
 		else:
 			print(current_successes)
+			qte_success.emit()
 			await get_tree().create_timer(0.5).timeout
 			start_new_round()
 			

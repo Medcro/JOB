@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://1xigkl6nyh6k"]
+
+[ext_resource type="Script" uid="uid://bqpea0twnakgr" path="res://scripts/qte.gd" id="1_tmbk4"]
+[ext_resource type="Texture2D" uid="uid://lt7madowgpa" path="res://assets/BarQTE.tres" id="2_1k5uo"]
+[ext_resource type="Texture2D" uid="uid://b1oc7xxvdimq4" path="res://assets/SuccessZone.tres" id="3_e5op3"]
+[ext_resource type="Texture2D" uid="uid://bux6513g0ieab" path="res://assets/needle.tres" id="4_impyq"]
+
+[node name="QTE" type="Control" unique_id=501056554]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tmbk4")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1617245704]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.0
+offset_top = -30.0
+offset_right = 1543.0
+offset_bottom = 258.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_1k5uo")
+
+[node name="SuccessZone" type="TextureRect" parent="Background" unique_id=343226364]
+layout_mode = 0
+offset_left = 250.0
+offset_right = 330.0
+offset_bottom = 30.0
+texture = ExtResource("3_e5op3")
+
+[node name="Needle" type="TextureRect" parent="Background" unique_id=1849658401]
+layout_mode = 0
+offset_top = -100.0
+offset_right = 137.00003
+offset_bottom = 454.0
+texture = ExtResource("4_impyq")
