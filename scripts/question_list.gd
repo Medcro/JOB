@@ -2,8 +2,10 @@ extends Node2D
 
 @onready var question_label = $paper1/VBoxContainer/Label
 @onready var answer_input = $paper2/LineEdit
+@export var max_correct = 15
 
 signal answer_correct
+signal win_condition
 
 var current_question_index : int = 0
 var quiz_items = [
@@ -119,10 +121,8 @@ func _on_answer_submitted(submitted_text: String):
 	if current_question_index >= quiz_items.size(): 
 		return
 
-	# 1. Get the raw correct answer from our list
 	var correct_ans_raw = quiz_items[current_question_index]["a"]
 	
-	# 2. Clean both versions (lowercase and remove all spaces) for a fair comparison
 	var user_ans = submitted_text.to_lower().replace(" ", "")
 	var real_ans = correct_ans_raw.to_lower().replace(" ", "")
 
@@ -134,11 +134,13 @@ func _on_answer_submitted(submitted_text: String):
 	else:
 		print("Wrong! Correct was: ", correct_ans_raw)
 		answer_input.modulate = Color.RED
-		# Briefly show red, then reset so they can try again
 		await get_tree().create_timer(0.4).timeout
 		answer_input.modulate = Color.WHITE
 		answer_input.text = ""
 		answer_input.grab_focus()
+	
+	if current_question_index >= max_correct:
+		win_condition.emit()
 		
 func _on_submit_button_pressed():
 	_on_answer_submitted(answer_input.text)

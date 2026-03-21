@@ -227,6 +227,7 @@ script = ExtResource("13_2f3dj")
 [node name="Timer" parent="CanvasLayer" unique_id=1206630171 instance=ExtResource("15_fv21b")]
 
 [node name="SanityBar" parent="CanvasLayer" unique_id=672946405 instance=ExtResource("14_yq6so")]
+value = 100.0
 
 [node name="QTE" parent="CanvasLayer" unique_id=501056554 instance=ExtResource("17_erk5d")]
 

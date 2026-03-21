@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://dul5aoxbcwqym"]
+
+[ext_resource type="Texture2D" uid="uid://b1yeobyl1w87y" path="res://assets/Good Ending/GoodEnding1.jpg" id="1_md2hi"]
+[ext_resource type="Script" uid="uid://do0uhsnsiu6rj" path="res://scenes/Ending/good_ending.gd" id="1_qfqgo"]
+[ext_resource type="FontFile" uid="uid://4ay0kbsbegnp" path="res://assets/Fonts/lucidity-psych.ttf" id="3_gf1ce"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gf1ce"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gsynk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bmdng"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2uuog"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u3n74"]
+
+[node name="GoodEnding" type="Node2D" unique_id=2046679050]
+script = ExtResource("1_qfqgo")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1585303072]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.233, 0.233)
+texture = ExtResource("1_md2hi")
+
+[node name="Control" type="Control" parent="." unique_id=1665865223]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="Control" unique_id=661115070]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 264.0
+offset_top = 27.0
+offset_right = 731.0
+offset_bottom = 128.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -15
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("3_gf1ce")
+theme_override_font_sizes/font_size = 100
+text = "You Got Accepted!"
+
+[node name="EndButton" type="Button" parent="Control" unique_id=1828385594]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 637.0
+offset_right = 169.0
+offset_bottom = 746.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.6156863, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("3_gf1ce")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gf1ce")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gsynk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_bmdng")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2uuog")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3n74")
+text = "<End"
+
+[node name="ContinueButton" type="Button" parent="Control" unique_id=1888292563]
+layout_mode = 0
+offset_left = 748.0
+offset_top = 637.0
+offset_right = 1007.0
+offset_bottom = 746.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.6156863, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("3_gf1ce")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gf1ce")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gsynk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_bmdng")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2uuog")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3n74")
+text = "Continue>"
+
+[connection signal="button_up" from="Control/EndButton" to="." method="_on_end_button_button_up"]
+[connection signal="button_up" from="Control/ContinueButton" to="." method="_on_continue_button_button_up"]

@@ -15,7 +15,7 @@ var required_successes: int = 3
 var current_successes: int = 0
 	
 func _process(delta):
-	if not is_active: 
+	if not is_active:
 		return
 	
 	needle.position.x += speed * delta
@@ -23,21 +23,22 @@ func _process(delta):
 	if needle.position.x + 50 > background.size.x:
 		fail_skill_check()
 	
-func _unhandled_input(event):
-	if is_active and event.is_action_pressed("ui_accept"): 
-		evaluate_hit()
-	
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and is_active:
+			evaluate_hit()
+			
 func start_new_round():
 	needle.position.x = 0
-	var min_x = 50.0 
-	var max_x = background.size.x - success_zone.size.x 
+	var min_x = 50.0
+	var max_x = background.size.x - success_zone.size.x
 	
 	success_zone.position.x = randf_range(min_x, max_x)
 	
 	is_active = true
 	
 func evaluate_hit():
-	is_active = false 
+	is_active = false
 	
 	var zone_start = success_zone.position.x
 	var zone_end = success_zone.position.x + success_zone.size.x

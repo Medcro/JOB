@@ -5,7 +5,7 @@ static var is_any_paper_active : bool = false
 @export var target : String
 @onready var anim: AnimationPlayer = $"../../../AnimationPlayer"
 @onready var timer: Timer = $Timer
-@onready var papers = $"../../../Papers" # Reference to the QuizManager node
+@onready var papers = $"../../../Papers"
 
 var hasPlayed : bool = false 
 signal timer_timeout
@@ -25,7 +25,6 @@ func _on_input_event(_viewport, event, _shape_idx):
 			open_paper()
 
 func open_paper():
-	# Tell the papers script to refresh the UI
 	papers.update_ui()
 	
 	Clickable.is_any_paper_active = true
@@ -33,7 +32,6 @@ func open_paper():
 	await get_tree().create_timer(0.3).timeout
 	hasPlayed = true
 	
-	# Start your timer when the paper is in the user's face
 	timer.start()
 
 func close_paper():
@@ -41,9 +39,8 @@ func close_paper():
 	await get_tree().create_timer(0.3).timeout
 	hasPlayed = false
 	Clickable.is_any_paper_active = false
-	timer.stop() # Stop the timer if they finish early
+	timer.stop() 
 	paper_closed.emit()
 
 func _on_timer_timeout():
-	print("Timer has finished! Time is up!")
 	timer_timeout.emit()
