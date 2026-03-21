@@ -13,10 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://bvxodu8v2sfvn" path="res://scenes/Game/paper.tscn" id="11_2wyq8"]
 [ext_resource type="Shader" uid="uid://x6baa18wdqj" path="res://scenes/Game/vignete.gdshader" id="12_vxglm"]
 [ext_resource type="Script" uid="uid://fsd501mxan24" path="res://scripts/color_rect.gd" id="13_2f3dj"]
-[ext_resource type="PackedScene" uid="uid://cyf3lenrd3mfs" path="res://sanity_bar.tscn" id="15_erk5d"]
+[ext_resource type="PackedScene" uid="uid://dwjmyrmt6e7tb" path="res://scenes/Game/sanity_bar.tscn" id="14_yq6so"]
 [ext_resource type="PackedScene" uid="uid://d05dbwphfwsif" path="res://scenes/Game/timer.tscn" id="15_fv21b"]
-[ext_resource type="PackedScene" uid="uid://cba2nwm2l552v" path="res://qte.tscn" id="16_pdew2"]
 [ext_resource type="PackedScene" uid="uid://dw4j18qekh7nd" path="res://scenes/Game/clickable.tscn" id="16_tel4y"]
+[ext_resource type="PackedScene" uid="uid://1xigkl6nyh6k" path="res://scenes/Game/qte.tscn" id="17_erk5d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qkpxi"]
 
@@ -224,14 +224,15 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("13_2f3dj")
 
-[node name="SanityBar" parent="CanvasLayer" unique_id=1474231086 instance=ExtResource("15_erk5d")]
-offset_right = 172.0
-offset_bottom = 1238.0
-
 [node name="Timer" parent="CanvasLayer" unique_id=1206630171 instance=ExtResource("15_fv21b")]
 
-[node name="QTE" parent="CanvasLayer" unique_id=304952963 instance=ExtResource("16_pdew2")]
+[node name="SanityBar" parent="CanvasLayer" unique_id=672946405 instance=ExtResource("14_yq6so")]
+
+[node name="QTE" parent="CanvasLayer" unique_id=501056554 instance=ExtResource("17_erk5d")]
 
 [node name="QTETimer" type="Timer" parent="CanvasLayer/QTE" unique_id=1796134119]
+one_shot = true
 
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Papers/paper2/SubmitButton" to="Papers" method="_on_submit_button_pressed"]
+[connection signal="timeout" from="CanvasLayer/QTE/QTETimer" to="." method="_on_qte_timer_timeout"]

@@ -30,7 +30,6 @@ func _ready():
 func _process(delta):
 	if sanity > 0:
 		sanity -= drain_rate * delta
-		sanity_bar.value = sanity
 		
 func start_random_timer_qte():
 	var random_wait = randf_range(5.0, 15.0) 
@@ -43,7 +42,6 @@ func _on_qte_timer_timeout() -> void:
 	
 func start_random_timer():
 	var wait_time = randf_range(10.0, 30.0)
-	print("start")
 	timer.start(wait_time)
 
 func _on_timer_timeout():
@@ -58,8 +56,6 @@ func change_environment():
 	paper_answer.texture = load("res://assets/red/Red-4.png")
 	paper_question.texture = load("res://assets/red/Red-5.png")
 	lamp.texture = load("res://assets/red/Red-6.png")
-	# Or trigger an animation/swap textures here
-	print("Environment changed!")
 	
 func decrease_sanity():
 	sanity -= 20
