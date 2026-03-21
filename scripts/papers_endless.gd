@@ -2,12 +2,10 @@ extends Node2D
 
 @onready var question_label = $paper1/VBoxContainer/Label
 @onready var answer_input = $paper2/LineEdit
-@export var max_correct = 15
 @onready var correct: AudioStreamPlayer = $"../Audio/Correct"
 @onready var wrong: AudioStreamPlayer = $"../Audio/Wrong"
 
 signal answer_correct
-signal win_condition
 
 var current_question_index : int = 0
 var quiz_items = [
@@ -144,9 +142,6 @@ func _on_answer_submitted(submitted_text: String):
 		answer_input.modulate = Color.WHITE
 		answer_input.text = ""
 		answer_input.grab_focus()
-	
-	if current_question_index >= max_correct:
-		win_condition.emit()
 		
 func _on_submit_button_pressed():
 	_on_answer_submitted(answer_input.text)

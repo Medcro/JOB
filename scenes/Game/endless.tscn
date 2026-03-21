@@ -1,0 +1,271 @@
+[gd_scene format=3 uid="uid://dxudjtaf1pg8y"]
+
+[ext_resource type="Script" uid="uid://ctye0k16n8ipo" path="res://scripts/endless.gd" id="1_m3ajq"]
+[ext_resource type="PackedScene" uid="uid://d3h04mlgnfmao" path="res://scenes/Game/smoke.tscn" id="2_ln2dy"]
+[ext_resource type="Texture2D" uid="uid://qr3ba3a7whe1" path="res://assets/pure/Pure-1.png" id="2_qjy8a"]
+[ext_resource type="Texture2D" uid="uid://126r74ffb8ac" path="res://assets/pure/AddBelowLight,AboveTable.png" id="3_ln2dy"]
+[ext_resource type="Texture2D" uid="uid://ckxnyysrnjke" path="res://assets/pure/Pure-2.png" id="4_31pwk"]
+[ext_resource type="Texture2D" uid="uid://dop6defo0ta7q" path="res://assets/pure/Pure-3.png" id="5_mqlyi"]
+[ext_resource type="Texture2D" uid="uid://2am4mwpubw57" path="res://assets/pure/Pure-4.png" id="6_umpd2"]
+[ext_resource type="PackedScene" uid="uid://dw4j18qekh7nd" path="res://scenes/Game/clickable.tscn" id="7_4hlo2"]
+[ext_resource type="Texture2D" uid="uid://bh5x68312s534" path="res://assets/pure/Pure-5.png" id="8_cdegc"]
+[ext_resource type="Texture2D" uid="uid://bpcjt78cng2kq" path="res://assets/pure/Pure-6.png" id="9_6t01q"]
+[ext_resource type="Script" uid="uid://db2ct1gggghjh" path="res://scripts/camera.gd" id="10_ycqyc"]
+[ext_resource type="Script" uid="uid://brpqjjve881jh" path="res://scripts/papers_endless.gd" id="12_qjy8a"]
+[ext_resource type="PackedScene" uid="uid://bvxodu8v2sfvn" path="res://scenes/Game/paper.tscn" id="12_rshds"]
+[ext_resource type="Shader" uid="uid://x6baa18wdqj" path="res://scenes/Game/vignete.gdshader" id="13_1v0jo"]
+[ext_resource type="Script" uid="uid://fsd501mxan24" path="res://scripts/color_rect.gd" id="14_e500x"]
+[ext_resource type="PackedScene" uid="uid://dwjmyrmt6e7tb" path="res://scenes/Game/sanity_bar.tscn" id="16_blagr"]
+[ext_resource type="PackedScene" uid="uid://1xigkl6nyh6k" path="res://scenes/Game/qte.tscn" id="17_swql2"]
+[ext_resource type="AudioStream" uid="uid://bon2wadmenra8" path="res://assets/audio/SFX_Heartbeat.wav" id="18_vyk76"]
+[ext_resource type="AudioStream" uid="uid://dtkytyfvl2d3c" path="res://assets/audio/SFX_SanityUp.wav" id="19_foxy1"]
+[ext_resource type="AudioStream" uid="uid://bbltjqtjakiud" path="res://assets/audio/SFX_SanityDown.wav" id="20_m7c4t"]
+[ext_resource type="AudioStream" uid="uid://002171ey84bp" path="res://assets/audio/Paper_CorrectAnswer.wav" id="21_0cfjb"]
+[ext_resource type="AudioStream" uid="uid://c4g5xqobhokmy" path="res://assets/audio/Paper_WrongAnswer.wav" id="22_37r7a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fm418"]
+
+[sub_resource type="Animation" id="Animation_yqjtg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Papers/paper1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(604, 1016.00006)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Papers/paper2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(592, 1010.00006)]
+}
+
+[sub_resource type="Animation" id="Animation_lnu2h"]
+resource_name = "paper1_up"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Papers/paper1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(17, 1064), Vector2(17, 53)]
+}
+
+[sub_resource type="Animation" id="Animation_lbhrr"]
+resource_name = "paper2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Papers/paper2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(23, 1068), Vector2(23, 53.000122)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h8k18"]
+_data = {
+&"RESET": SubResource("Animation_yqjtg"),
+&"paper1": SubResource("Animation_lnu2h"),
+&"paper2": SubResource("Animation_lbhrr")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8tk2q"]
+shader = ExtResource("13_1v0jo")
+shader_parameter/outerRadius = 1.0
+shader_parameter/MainAlpha = 0.0
+
+[node name="endless" type="Node2D" unique_id=469917081]
+script = ExtResource("1_m3ajq")
+smoke = ExtResource("2_ln2dy")
+
+[node name="Timer" type="Timer" parent="." unique_id=1278785848]
+one_shot = true
+
+[node name="Environment" type="Panel" parent="." unique_id=2094947217]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -67.0
+offset_right = 1022.0
+offset_bottom = 709.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fm418")
+
+[node name="Background" type="Sprite2D" parent="Environment" unique_id=589245002]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_qjy8a")
+
+[node name="Light" type="Sprite2D" parent="Environment" unique_id=1493439684]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_ln2dy")
+
+[node name="Person" type="Sprite2D" parent="Environment" unique_id=480922618]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_31pwk")
+
+[node name="Table" type="Sprite2D" parent="Environment" unique_id=434298555]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("5_mqlyi")
+
+[node name="PaperAnswer" type="Sprite2D" parent="Environment" unique_id=1759956898]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("6_umpd2")
+
+[node name="Clickable2" parent="Environment/PaperAnswer" unique_id=1598772029 instance=ExtResource("7_4hlo2")]
+position = Vector2(445.71436, 908.5715)
+rotation = -0.066557124
+scale = Vector2(7.352417, 5.975019)
+target = "paper2"
+
+[node name="PaperQuestion" type="Sprite2D" parent="Environment" unique_id=1728245643]
+scale = Vector2(0.348, 0.348)
+texture = ExtResource("8_cdegc")
+
+[node name="Clickable" parent="Environment/PaperQuestion" unique_id=647069109 instance=ExtResource("7_4hlo2")]
+position = Vector2(-376.43674, 905.1725)
+rotation = 0.06773302
+scale = Vector2(7.353191, 5.382475)
+target = "paper1"
+
+[node name="Lamp" type="Sprite2D" parent="Environment" unique_id=370903540]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("9_6t01q")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=429880727 node_paths=PackedStringArray("player")]
+position = Vector2(1, 2)
+offset = Vector2(-5, -5)
+zoom = Vector2(1.05, 1.05)
+script = ExtResource("10_ycqyc")
+player = NodePath("..")
+mouse_weight = 0.125
+
+[node name="Papers" type="Node2D" parent="." unique_id=2103073743]
+script = ExtResource("12_qjy8a")
+
+[node name="paper1" parent="Papers" unique_id=943171573 instance=ExtResource("12_rshds")]
+position = Vector2(604, 1016.00006)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Papers/paper1" unique_id=770551039]
+offset_left = -217.0
+offset_top = -218.00006
+offset_right = 212.0
+offset_bottom = 372.99994
+
+[node name="Label" type="Label" parent="Papers/paper1/VBoxContainer" unique_id=1682929937]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="Papers/paper1" unique_id=1441429487]
+offset_left = -129.0
+offset_top = -282.00006
+offset_right = 111.0
+offset_bottom = -237.00006
+theme_override_font_sizes/font_size = 32
+text = "Question Paper"
+
+[node name="paper2" parent="Papers" unique_id=635453391 instance=ExtResource("12_rshds")]
+position = Vector2(592, 1010.00006)
+
+[node name="Label" type="Label" parent="Papers/paper2" unique_id=534803070]
+offset_left = -106.0
+offset_top = -250.00006
+offset_right = 105.0
+offset_bottom = -205.00006
+theme_override_font_sizes/font_size = 32
+text = "Answer Sheet"
+
+[node name="LineEdit" type="LineEdit" parent="Papers/paper2" unique_id=950017117]
+offset_left = -166.0
+offset_top = -154.00006
+offset_right = 171.0
+offset_bottom = -96.00006
+theme_override_font_sizes/font_size = 28
+
+[node name="SubmitButton" type="Button" parent="Papers/paper2" unique_id=1141243798]
+offset_left = -89.0
+offset_top = -56.00006
+offset_right = 84.0
+offset_bottom = 31.999939
+text = "submit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=206988861]
+libraries/ = SubResource("AnimationLibrary_h8k18")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1228444869]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=2079432670]
+material = SubResource("ShaderMaterial_8tk2q")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("14_e500x")
+
+[node name="SanityBar" parent="CanvasLayer" unique_id=672946405 instance=ExtResource("16_blagr")]
+value = 100.0
+
+[node name="QTE" parent="CanvasLayer" unique_id=501056554 instance=ExtResource("17_swql2")]
+
+[node name="QTETimer" type="Timer" parent="CanvasLayer/QTE" unique_id=82696203]
+one_shot = true
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1193804470]
+offset_left = 731.0
+offset_right = 1021.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 48
+text = "Score = 0"
+horizontal_alignment = 2
+
+[node name="Audio" type="Node" parent="." unique_id=626928629]
+
+[node name="Heartbeat" type="AudioStreamPlayer" parent="Audio" unique_id=1751276359]
+stream = ExtResource("18_vyk76")
+bus = &"SFX"
+
+[node name="SanityUp" type="AudioStreamPlayer" parent="Audio" unique_id=568115645]
+stream = ExtResource("19_foxy1")
+bus = &"SFX"
+
+[node name="SanityDown" type="AudioStreamPlayer" parent="Audio" unique_id=1076788825]
+stream = ExtResource("20_m7c4t")
+bus = &"SFX"
+
+[node name="Correct" type="AudioStreamPlayer" parent="Audio" unique_id=1282986576]
+stream = ExtResource("21_0cfjb")
+bus = &"SFX"
+
+[node name="Wrong" type="AudioStreamPlayer" parent="Audio" unique_id=1340925791]
+stream = ExtResource("22_37r7a")
+bus = &"SFX"
+
+[connection signal="pressed" from="Papers/paper2/SubmitButton" to="Papers" method="_on_submit_button_pressed"]

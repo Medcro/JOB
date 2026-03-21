@@ -20,11 +20,13 @@ extends Node2D
 @onready var heartbeat: AudioStreamPlayer = $Audio/Heartbeat
 @onready var sanity_up: AudioStreamPlayer = $Audio/SanityUp
 @onready var sanity_down: AudioStreamPlayer = $Audio/SanityDown
+@onready var score_label: Label = $CanvasLayer/ScoreLabel
 
 var sanity : float = 100.0 
 var drain_rate : float = 1.0
 var game_over : bool = false
 var isRed : bool = false
+var score : int = 0
 
 func _ready():
 	qte.hide()
@@ -32,7 +34,7 @@ func _ready():
 	qte.qte_failed.connect(decrease_sanity)
 	qte.qte_success.connect(increase_sanity)
 	papers.answer_correct.connect(increase_sanity)
-	papers.win_condition.connect(good_ending)
+	papers.answer_correct.connect(increase_score)
 	start_random_timer()
 	sanity_bar.max_value = 100
 	start_random_timer_qte()
@@ -110,10 +112,19 @@ func bad_ending():
 	SaveManager.save_game()
 	get_tree().change_scene_to_file("res://scenes/Main Menu/main_menu.tscn")
 
-func good_ending():
-	await get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://scenes/Ending/good_ending.tscn")
-
+func increase_score():
+	score += 200
+	
+	score_label.text = "Score = " + str(score)
+	
+	if score >= 2000:
+		GlobalData.achievement_2k = true
+	if score >= 4000:
+		GlobalData.achievement_4k = true
+	if score >= 10000:
+		GlobalData.achievement_10k = true
+	SaveManager.save_game()
+	
 func shake_sprite(sprite: Sprite2D, intensity: float = 5.0, duration: float = 3.8):
 	var original_pos = sprite.position
 	var tween = create_tween()
