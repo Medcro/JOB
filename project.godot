@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://d2hog3ovduhl"
 
+[autoload]
+
+SfxManager="*uid://8sv3j3j2518y"
+MusicManager="*uid://bjfh3txx18ejc"
+Fade="*uid://d2ue1ifaq01u7"
+
 [display]
 
 window/size/viewport_width=1024

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bjfh3txx18ejc"]
+
+[ext_resource type="Script" uid="uid://dltuv34jowb7c" path="res://scripts/Audio Managers/music_manager.gd" id="1_vmvw8"]
+[ext_resource type="AudioStream" uid="uid://dxq5ilpb5krn8" path="res://assets/Audio/Music/Menu Screen.ogg" id="2_425l6"]
+[ext_resource type="AudioStream" uid="uid://bwuw8ti34m5n0" path="res://assets/Audio/Music/Game Music.ogg" id="2_nrgbd"]
+
+[node name="MusicManager" type="Node" unique_id=1548643380]
+script = ExtResource("1_vmvw8")
+
+[node name="Main_Menu" type="AudioStreamPlayer" parent="." unique_id=1894973365]
+stream = ExtResource("2_425l6")
+volume_db = -30.0
+autoplay = true
+bus = &"Music"
+
+[node name="Game" type="AudioStreamPlayer" parent="." unique_id=1186046313]
+stream = ExtResource("2_nrgbd")
+volume_db = -75.0
+autoplay = true
+bus = &"Music"

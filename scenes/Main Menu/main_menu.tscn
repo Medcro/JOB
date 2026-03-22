@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cm5kic2xdokbw" path="res://scenes/Main Menu/main_menu.gd" id="1_1o70l"]
 [ext_resource type="Texture2D" uid="uid://cepht50mlunr6" path="res://assets/Main Menu/Opening_Screen.jpg" id="2_iscfu"]
 [ext_resource type="FontFile" uid="uid://4ay0kbsbegnp" path="res://assets/Fonts/lucidity-psych.ttf" id="3_3e4a6"]
+[ext_resource type="AudioStream" uid="uid://by58c6imkd5xb" path="res://assets/Audio/SFX/Button_Hover.wav" id="4_gc41w"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xleg7"]
 texture = ExtResource("2_iscfu")
@@ -109,7 +110,16 @@ theme_override_font_sizes/font_size = 100
 text = "Tell Me More
 About Yourself"
 
+[node name="Hover" type="AudioStreamPlayer" parent="." unique_id=1831507659]
+stream = ExtResource("4_gc41w")
+volume_db = -10.0
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="Button Container/Normal" to="." method="_on_normal_mouse_entered"]
 [connection signal="pressed" from="Button Container/Normal" to="." method="_on_normal_pressed"]
+[connection signal="mouse_entered" from="Button Container/Endless" to="." method="_on_endless_mouse_entered"]
 [connection signal="pressed" from="Button Container/Endless" to="." method="_on_endless_pressed"]
+[connection signal="mouse_entered" from="Button Container/Settings" to="." method="_on_settings_mouse_entered"]
 [connection signal="pressed" from="Button Container/Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="Button Container/Exit" to="." method="_on_exit_mouse_entered"]
 [connection signal="pressed" from="Button Container/Exit" to="." method="_on_exit_pressed"]

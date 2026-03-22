@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dwjmyrmt6e7tb" path="res://scenes/Game/sanity_bar.tscn" id="8_cueac"]
 [ext_resource type="PackedScene" uid="uid://d05dbwphfwsif" path="res://scenes/Game/timer.tscn" id="9_r8o54"]
 [ext_resource type="PackedScene" uid="uid://1xigkl6nyh6k" path="res://scenes/Game/qte.tscn" id="10_rsxsa"]
+[ext_resource type="PackedScene" uid="uid://c67ujyfajb5na" path="res://scenes/Pause Menu/pause_menu.tscn" id="11_5rpqn"]
 
 [sub_resource type="Animation" id="Animation_yqjtg"]
 length = 0.001
@@ -83,6 +84,7 @@ shader_parameter/outerRadius = 1.0
 shader_parameter/MainAlpha = 0.0
 
 [node name="game" type="Node2D" unique_id=667005455]
+process_mode = 3
 script = ExtResource("1_ph5vl")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=383754331 node_paths=PackedStringArray("player")]
@@ -153,5 +155,7 @@ value = 100.0
 [node name="QTE" parent="CanvasLayer" unique_id=501056554 instance=ExtResource("10_rsxsa")]
 
 [node name="QTETimer" type="Timer" parent="CanvasLayer/QTE" unique_id=1669069871]
+
+[node name="PauseMenu" parent="." unique_id=747320220 instance=ExtResource("11_5rpqn")]
 
 [connection signal="timeout" from="CanvasLayer/QTE/QTETimer" to="." method="_on_qte_timer_timeout"]

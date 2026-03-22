@@ -8,6 +8,7 @@ var sanity : float = 100.0
 var drain_rate : float = 1.0
 
 func _ready():
+	MusicManager.play_game()
 	qte.hide()
 	qte.qte_finished.connect(start_random_timer)
 	qte.qte_failed.connect(decrease_sanity)

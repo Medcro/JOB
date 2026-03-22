@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://8sv3j3j2518y"]
+
+[ext_resource type="Script" uid="uid://odvi8crthofb" path="res://scripts/Audio Managers/sfx_manager.gd" id="1_5323x"]
+[ext_resource type="AudioStream" uid="uid://d21y6tb7u1lhl" path="res://assets/Audio/SFX/Button_Select.wav" id="2_iu05t"]
+[ext_resource type="AudioStream" uid="uid://bamt0e5rcdlll" path="res://assets/Audio/SFX/Button_StartGame.wav" id="3_a6kek"]
+
+[node name="SfxManager" type="Node" unique_id=1305453951]
+script = ExtResource("1_5323x")
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=1295346394]
+stream = ExtResource("2_iu05t")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Click_Normal" type="AudioStreamPlayer" parent="." unique_id=1870877136]
+stream = ExtResource("3_a6kek")
+volume_db = -10.0
+bus = &"SFX"

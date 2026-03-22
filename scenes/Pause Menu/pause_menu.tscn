@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://c67ujyfajb5na"]
+
+[ext_resource type="FontFile" uid="uid://4ay0kbsbegnp" path="res://assets/Fonts/lucidity-psych.ttf" id="1_cyvwr"]
+[ext_resource type="Script" uid="uid://cblybrbhrmfvm" path="res://scenes/Pause Menu/pause_menu.gd" id="1_ls3ff"]
+[ext_resource type="Texture2D" uid="uid://3m1bien40orf" path="res://assets/Pause Menu/pausebutton.png" id="1_qaqk8"]
+[ext_resource type="Texture2D" uid="uid://biijjvg2q7ywu" path="res://assets/Pause Menu/pausebutton_clicked.png" id="2_wwuc8"]
+[ext_resource type="AudioStream" uid="uid://by58c6imkd5xb" path="res://assets/Audio/SFX/Button_Hover.wav" id="6_pfkb7"]
+[ext_resource type="AudioStream" uid="uid://d21y6tb7u1lhl" path="res://assets/Audio/SFX/Button_Select.wav" id="7_yvxt5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uum55"]
+texture = ExtResource("1_qaqk8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cyvwr"]
+texture = ExtResource("2_wwuc8")
+modulate_color = Color(0.9490196, 0.15294118, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wwuc8"]
+texture = ExtResource("2_wwuc8")
+modulate_color = Color(0.9490196, 0.15294118, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ckot8"]
+texture = ExtResource("2_wwuc8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ls3ff"]
+texture = ExtResource("2_wwuc8")
+
+[node name="PauseMenu" type="Control" unique_id=747320220]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ls3ff")
+
+[node name="PauseButton" type="Button" parent="." unique_id=168424477]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 40.0
+offset_right = 361.0
+offset_bottom = 363.0
+scale = Vector2(0.3, 0.3)
+theme_override_styles/normal = SubResource("StyleBoxTexture_uum55")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cyvwr")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_wwuc8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ckot8")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_ls3ff")
+
+[node name="PausePopUp" type="Control" parent="." unique_id=1016009161]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim BG" type="ColorRect" parent="PausePopUp" unique_id=8632720]
+modulate = Color(0, 0, 0, 0.56078434)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.42903125, 0.42903125, 0.42903125, 1)
+
+[node name="Pause Button Container" type="VBoxContainer" parent="PausePopUp" unique_id=875613665]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -152.5
+offset_right = 94.0
+offset_bottom = 152.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="PausePopUp/Pause Button Container" unique_id=1623724647]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.6156863, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("1_cyvwr")
+theme_override_font_sizes/font_size = 90
+text = "Resume"
+flat = true
+
+[node name="ResetButton" type="Button" parent="PausePopUp/Pause Button Container" unique_id=1494463214]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.6156863, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("1_cyvwr")
+theme_override_font_sizes/font_size = 90
+text = "Restart"
+flat = true
+
+[node name="ExitButton" type="Button" parent="PausePopUp/Pause Button Container" unique_id=1338838541]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.6156863, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("1_cyvwr")
+theme_override_font_sizes/font_size = 90
+text = "Exit"
+flat = true
+
+[node name="Hover" type="AudioStreamPlayer" parent="." unique_id=1300841620]
+stream = ExtResource("6_pfkb7")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=1437412691]
+stream = ExtResource("7_yvxt5")
+volume_db = -10.0
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="PauseButton" to="." method="_on_pause_button_mouse_entered"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="mouse_entered" from="PausePopUp/Pause Button Container/ResumeButton" to="." method="_on_resume_button_mouse_entered"]
+[connection signal="pressed" from="PausePopUp/Pause Button Container/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="PausePopUp/Pause Button Container/ResetButton" to="." method="_on_reset_button_mouse_entered"]
+[connection signal="pressed" from="PausePopUp/Pause Button Container/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="mouse_entered" from="PausePopUp/Pause Button Container/ExitButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="pressed" from="PausePopUp/Pause Button Container/ExitButton" to="." method="_on_exit_button_pressed"]

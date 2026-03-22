@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://dlulbvjff8yk4" path="res://scenes/Main Menu/settings.gd" id="1_612qo"]
 [ext_resource type="Texture2D" uid="uid://cepht50mlunr6" path="res://assets/Main Menu/Opening_Screen.jpg" id="1_j7j5u"]
 [ext_resource type="FontFile" uid="uid://4ay0kbsbegnp" path="res://assets/Fonts/lucidity-psych.ttf" id="2_612qo"]
-[ext_resource type="Script" uid="uid://blji7ubrfgo7b" path="res://scenes/Main Menu/audio_control.gd" id="4_2sm5e"]
+[ext_resource type="AudioStream" uid="uid://by58c6imkd5xb" path="res://assets/Audio/SFX/Button_Hover.wav" id="5_kq3ng"]
+[ext_resource type="AudioStream" uid="uid://d21y6tb7u1lhl" path="res://assets/Audio/SFX/Button_Select.wav" id="6_41lut"]
+[ext_resource type="AudioStream" uid="uid://dixgqt3hkk6ja" path="res://assets/Audio/SFX/Button_VolumeToggle.wav" id="7_41lut"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2sm5e"]
 texture = ExtResource("1_j7j5u")
@@ -18,6 +20,7 @@ thickness = 8
 thickness = 8
 
 [node name="Settings" type="Control" unique_id=1926087575]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -127,13 +130,7 @@ theme_override_font_sizes/font_size = 100
 text = "<"
 flat = true
 
-[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1948218337]
-bus = &"Music"
-
-[node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=659781172]
-bus = &"SFX"
-
-[node name="Music Slider" type="HSlider" parent="." unique_id=567367761]
+[node name="Music_Slider" type="HSlider" parent="." unique_id=567367761]
 layout_mode = 0
 offset_left = 326.0
 offset_top = 331.0
@@ -142,13 +139,11 @@ offset_bottom = 374.0
 theme_override_styles/slider = SubResource("StyleBoxLine_612qo")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_2sm5e")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_vn26y")
-max_value = 1.0
-step = 0.05
-value = 1.0
-script = ExtResource("4_2sm5e")
-audio_bus_name = "Music"
+max_value = 1.5
+step = 0.001
+value = 1.5
 
-[node name="SFX Slider" type="HSlider" parent="." unique_id=1775298772]
+[node name="SFX_Slider" type="HSlider" parent="." unique_id=1775298772]
 layout_mode = 0
 offset_left = 327.0
 offset_top = 441.0
@@ -157,14 +152,35 @@ offset_bottom = 484.0
 theme_override_styles/slider = SubResource("StyleBoxLine_612qo")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_2sm5e")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_vn26y")
-max_value = 1.0
-step = 0.05
-value = 1.0
-script = ExtResource("4_2sm5e")
-audio_bus_name = "SFX"
+max_value = 1.5
+step = 0.001
+value = 1.5
 
+[node name="Hover" type="AudioStreamPlayer" parent="." unique_id=1174189896]
+stream = ExtResource("5_kq3ng")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=566763261]
+stream = ExtResource("6_41lut")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="VolumeToggle_Music" type="AudioStreamPlayer" parent="." unique_id=500519666]
+stream = ExtResource("7_41lut")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="VolumeToggle_SFX" type="AudioStreamPlayer" parent="." unique_id=1825944372]
+stream = ExtResource("7_41lut")
+volume_db = -10.0
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="Reset Data Button" to="." method="_on_reset_data_button_mouse_entered"]
+[connection signal="pressed" from="Reset Data Button" to="." method="_on_reset_data_button_pressed"]
+[connection signal="mouse_entered" from="Back Button" to="." method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="Back Button" to="." method="_on_back_button_pressed"]
-[connection signal="value_changed" from="Music Slider" to="." method="_on_h_slider_value_changed"]
-[connection signal="value_changed" from="Music Slider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="Music Slider" to="Music Slider" method="_on_value_changed"]
-[connection signal="value_changed" from="SFX Slider" to="SFX Slider" method="_on_value_changed"]
+[connection signal="drag_ended" from="Music_Slider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="value_changed" from="Music_Slider" to="." method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="SFX_Slider" to="." method="_on_sfx_slider_drag_ended"]
+[connection signal="value_changed" from="SFX_Slider" to="." method="_on_sfx_slider_value_changed"]
