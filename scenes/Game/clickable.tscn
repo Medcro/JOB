@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dw4j18qekh7nd"]
 
 [ext_resource type="Script" uid="uid://bvh63qpmdm2sj" path="res://scripts/clickable.gd" id="1_i5j3f"]
-[ext_resource type="AudioStream" uid="uid://v60o36d71psj" path="res://assets/audio/Paper_PageFlip.wav" id="2_1xmdy"]
+[ext_resource type="AudioStream" uid="uid://v60o36d71psj" path="res://assets/audio/SFX/Paper_PageFlip.wav" id="2_1xmdy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ur3sy"]
 size = Vector2(99, 124)

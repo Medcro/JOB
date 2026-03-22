@@ -15,13 +15,17 @@
 [ext_resource type="PackedScene" uid="uid://bvxodu8v2sfvn" path="res://scenes/Game/paper.tscn" id="12_rshds"]
 [ext_resource type="Shader" uid="uid://x6baa18wdqj" path="res://scenes/Game/vignete.gdshader" id="13_1v0jo"]
 [ext_resource type="Script" uid="uid://fsd501mxan24" path="res://scripts/color_rect.gd" id="14_e500x"]
+[ext_resource type="FontFile" uid="uid://4ay0kbsbegnp" path="res://assets/Fonts/lucidity-psych.ttf" id="14_mqlyi"]
 [ext_resource type="PackedScene" uid="uid://dwjmyrmt6e7tb" path="res://scenes/Game/sanity_bar.tscn" id="16_blagr"]
 [ext_resource type="PackedScene" uid="uid://1xigkl6nyh6k" path="res://scenes/Game/qte.tscn" id="17_swql2"]
-[ext_resource type="AudioStream" uid="uid://bon2wadmenra8" path="res://assets/audio/SFX_Heartbeat.wav" id="18_vyk76"]
-[ext_resource type="AudioStream" uid="uid://dtkytyfvl2d3c" path="res://assets/audio/SFX_SanityUp.wav" id="19_foxy1"]
-[ext_resource type="AudioStream" uid="uid://bbltjqtjakiud" path="res://assets/audio/SFX_SanityDown.wav" id="20_m7c4t"]
-[ext_resource type="AudioStream" uid="uid://002171ey84bp" path="res://assets/audio/Paper_CorrectAnswer.wav" id="21_0cfjb"]
-[ext_resource type="AudioStream" uid="uid://c4g5xqobhokmy" path="res://assets/audio/Paper_WrongAnswer.wav" id="22_37r7a"]
+[ext_resource type="AudioStream" uid="uid://bon2wadmenra8" path="res://assets/audio/SFX/SFX_Heartbeat.wav" id="18_vyk76"]
+[ext_resource type="AudioStream" uid="uid://dtkytyfvl2d3c" path="res://assets/audio/SFX/SFX_SanityUp.wav" id="19_foxy1"]
+[ext_resource type="AudioStream" uid="uid://bbltjqtjakiud" path="res://assets/audio/SFX/SFX_SanityDown.wav" id="20_m7c4t"]
+[ext_resource type="AudioStream" uid="uid://002171ey84bp" path="res://assets/audio/SFX/Paper_CorrectAnswer.wav" id="21_0cfjb"]
+[ext_resource type="AudioStream" uid="uid://c4g5xqobhokmy" path="res://assets/audio/SFX/Paper_WrongAnswer.wav" id="22_37r7a"]
+[ext_resource type="AudioStream" uid="uid://cgyohrkqx03sl" path="res://assets/audio/BGM/Gameplay (Intro).wav" id="23_31pwk"]
+[ext_resource type="AudioStream" uid="uid://4eov78sn3jku" path="res://assets/audio/BGM/GAMEPLAY.wav" id="24_mqlyi"]
+[ext_resource type="AudioStream" uid="uid://c1u6ad5726c7" path="res://assets/audio/SFX/SFX_QTEStart.wav" id="25_umpd2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fm418"]
 
@@ -163,7 +167,7 @@ offset = Vector2(-5, -5)
 zoom = Vector2(1.05, 1.05)
 script = ExtResource("10_ycqyc")
 player = NodePath("..")
-mouse_weight = 0.125
+mouse_weight = 0.115
 
 [node name="Papers" type="Node2D" parent="." unique_id=2103073743]
 script = ExtResource("12_qjy8a")
@@ -173,13 +177,14 @@ position = Vector2(604, 1016.00006)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Papers/paper1" unique_id=770551039]
 offset_left = -217.0
-offset_top = -218.00006
+offset_top = -188.00006
 offset_right = 212.0
-offset_bottom = 372.99994
+offset_bottom = 402.99994
 
 [node name="Label" type="Label" parent="Papers/paper1/VBoxContainer" unique_id=1682929937]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = ExtResource("14_mqlyi")
+theme_override_font_sizes/font_size = 48
 autowrap_mode = 2
 
 [node name="Label" type="Label" parent="Papers/paper1" unique_id=1441429487]
@@ -187,8 +192,10 @@ offset_left = -129.0
 offset_top = -282.00006
 offset_right = 111.0
 offset_bottom = -237.00006
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("14_mqlyi")
+theme_override_font_sizes/font_size = 52
 text = "Question Paper"
+horizontal_alignment = 1
 
 [node name="paper2" parent="Papers" unique_id=635453391 instance=ExtResource("12_rshds")]
 position = Vector2(592, 1010.00006)
@@ -198,21 +205,26 @@ offset_left = -106.0
 offset_top = -250.00006
 offset_right = 105.0
 offset_bottom = -205.00006
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("14_mqlyi")
+theme_override_font_sizes/font_size = 52
 text = "Answer Sheet"
+horizontal_alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="Papers/paper2" unique_id=950017117]
 offset_left = -166.0
 offset_top = -154.00006
 offset_right = 171.0
 offset_bottom = -96.00006
-theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = ExtResource("14_mqlyi")
+theme_override_font_sizes/font_size = 48
 
 [node name="SubmitButton" type="Button" parent="Papers/paper2" unique_id=1141243798]
 offset_left = -89.0
 offset_top = -56.00006
 offset_right = 84.0
 offset_bottom = 31.999939
+theme_override_fonts/font = ExtResource("14_mqlyi")
+theme_override_font_sizes/font_size = 36
 text = "submit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=206988861]
@@ -242,7 +254,8 @@ one_shot = true
 offset_left = 731.0
 offset_right = 1021.0
 offset_bottom = 67.0
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("14_mqlyi")
+theme_override_font_sizes/font_size = 68
 text = "Score = 0"
 horizontal_alignment = 2
 
@@ -268,4 +281,17 @@ bus = &"SFX"
 stream = ExtResource("22_37r7a")
 bus = &"SFX"
 
+[node name="Intro" type="AudioStreamPlayer" parent="Audio" unique_id=2078261169]
+stream = ExtResource("23_31pwk")
+bus = &"Music"
+
+[node name="BGM" type="AudioStreamPlayer" parent="Audio" unique_id=348486243]
+stream = ExtResource("24_mqlyi")
+bus = &"Music"
+
+[node name="QTESound" type="AudioStreamPlayer" parent="Audio" unique_id=923166328]
+stream = ExtResource("25_umpd2")
+bus = &"SFX"
+
 [connection signal="pressed" from="Papers/paper2/SubmitButton" to="Papers" method="_on_submit_button_pressed"]
+[connection signal="finished" from="Audio/Intro" to="." method="_on_intro_finished"]

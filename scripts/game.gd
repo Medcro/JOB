@@ -20,6 +20,10 @@ extends Node2D
 @onready var heartbeat: AudioStreamPlayer = $Audio/Heartbeat
 @onready var sanity_up: AudioStreamPlayer = $Audio/SanityUp
 @onready var sanity_down: AudioStreamPlayer = $Audio/SanityDown
+@onready var intro: AudioStreamPlayer = $Audio/Intro
+@onready var bgm: AudioStreamPlayer = $Audio/BGM
+@onready var bell: AudioStreamPlayer = $Audio/Bell
+@onready var qte_sound: AudioStreamPlayer = $Audio/QTESound
 
 var sanity : float = 100.0 
 var drain_rate : float = 1.0
@@ -36,6 +40,7 @@ func _ready():
 	start_random_timer()
 	sanity_bar.max_value = 100
 	start_random_timer_qte()
+	intro.play()
 
 func _process(delta):
 	if not game_over:
@@ -55,7 +60,7 @@ func start_random_timer_qte():
 	qte_timer.start()
 
 func _on_qte_timer_timeout() -> void:
-	heartbeat.play()
+	qte_sound.play()
 	await get_tree().create_timer(3.0).timeout
 	qte.show() 
 	qte.start_new_round()
@@ -75,6 +80,7 @@ func _on_timer_timeout():
 	start_random_timer()
 
 func change_environment():
+	bgm.pitch_scale = 0.5
 	background.texture = load("res://assets/red/Red-1.png")
 	light.texture = load("res://assets/red/AddBelowLight,AboveTable.png")
 	person.texture = load("res://assets/red/Red-2.png")
@@ -92,6 +98,9 @@ func increase_sanity():
 	sanity_up.play()
 
 func bad_ending():
+	bgm.stop()
+	heartbeat.play()
+	bell.play()
 	canvas_layer.visible = false
 	clickable.visible = false
 	clickable_2.visible = false
@@ -124,6 +133,7 @@ func shake_sprite(sprite: Sprite2D, intensity: float = 5.0, duration: float = 3.
 		tween.tween_property(sprite, "position", original_pos, duration / 8.0)
 		
 func spawn_random_sprite():
+	heartbeat.play()
 	if smoke == null:
 		return
 	var screen_size = get_viewport_rect().size
@@ -137,7 +147,6 @@ func spawn_random_sprite():
 	new_sprite.tree_exited.connect(_on_smoke_cleared)
 	
 	add_child(new_sprite)
-	print("spawn at ", random_x, ", ", random_y)
 	
 	drain_rate = 2.0
 
@@ -154,3 +163,6 @@ func _on_smoke_cleared():
 	
 	if smokes_left == 0:
 		drain_rate = 1.0
+
+func _on_intro_finished() -> void:
+	bgm.play()

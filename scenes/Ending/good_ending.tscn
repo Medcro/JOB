@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://b1yeobyl1w87y" path="res://assets/Good Ending/GoodEnding1.jpg" id="1_md2hi"]
 [ext_resource type="Script" uid="uid://do0uhsnsiu6rj" path="res://scenes/Ending/good_ending.gd" id="1_qfqgo"]
 [ext_resource type="FontFile" uid="uid://4ay0kbsbegnp" path="res://assets/Fonts/lucidity-psych.ttf" id="3_gf1ce"]
-[ext_resource type="AudioStream" uid="uid://by58c6imkd5xb" path="res://assets/audio/Button_Hover.wav" id="4_bmdng"]
-[ext_resource type="AudioStream" uid="uid://d21y6tb7u1lhl" path="res://assets/audio/Button_Select.wav" id="5_2uuog"]
+[ext_resource type="AudioStream" uid="uid://by58c6imkd5xb" path="res://assets/audio/SFX/Button_Hover.wav" id="4_bmdng"]
+[ext_resource type="AudioStream" uid="uid://d21y6tb7u1lhl" path="res://assets/audio/SFX/Button_Select.wav" id="5_2uuog"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gf1ce"]
 

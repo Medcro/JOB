@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d05dbwphfwsif"]
 
 [ext_resource type="Script" uid="uid://toky25yra2ba" path="res://scripts/timer.gd" id="1_srplv"]
+[ext_resource type="FontFile" uid="uid://4ay0kbsbegnp" path="res://assets/Fonts/lucidity-psych.ttf" id="2_g8a1r"]
 
 [node name="Timer" type="Node" unique_id=1206630171]
 script = ExtResource("1_srplv")
@@ -10,7 +11,8 @@ time = 300
 offset_left = 940.0
 offset_right = 1022.0
 offset_bottom = 45.0
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("2_g8a1r")
+theme_override_font_sizes/font_size = 52
 text = "00:00"
 
 [node name="Timer" type="Timer" parent="." unique_id=1284407941]

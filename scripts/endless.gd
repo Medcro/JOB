@@ -21,6 +21,9 @@ extends Node2D
 @onready var sanity_up: AudioStreamPlayer = $Audio/SanityUp
 @onready var sanity_down: AudioStreamPlayer = $Audio/SanityDown
 @onready var score_label: Label = $CanvasLayer/ScoreLabel
+@onready var intro: AudioStreamPlayer = $Audio/Intro
+@onready var bgm: AudioStreamPlayer = $Audio/BGM
+@onready var qte_sound: AudioStreamPlayer = $Audio/QTESound
 
 var sanity : float = 100.0 
 var drain_rate : float = 1.0
@@ -29,6 +32,7 @@ var isRed : bool = false
 var score : int = 0
 
 func _ready():
+	intro.play()
 	qte.hide()
 	qte.qte_finished.connect(start_random_timer_qte)
 	qte.qte_failed.connect(decrease_sanity)
@@ -57,7 +61,7 @@ func start_random_timer_qte():
 	qte_timer.start()
 
 func _on_qte_timer_timeout() -> void:
-	heartbeat.play()
+	qte_sound.play()
 	await get_tree().create_timer(3.0).timeout
 	qte.show() 
 	qte.start_new_round()
@@ -77,6 +81,7 @@ func _on_timer_timeout():
 	start_random_timer()
 
 func change_environment():
+	bgm.pitch_scale = 0.5
 	background.texture = load("res://assets/red/Red-1.png")
 	light.texture = load("res://assets/red/AddBelowLight,AboveTable.png")
 	person.texture = load("res://assets/red/Red-2.png")
@@ -94,6 +99,8 @@ func increase_sanity():
 	sanity_up.play()
 
 func bad_ending():
+	bgm.stop()
+	heartbeat.play()
 	canvas_layer.visible = false
 	clickable.visible = false
 	clickable_2.visible = false
@@ -108,8 +115,6 @@ func bad_ending():
 	person.texture = load("res://assets/Bad Ending/End-3.png")
 	shake_sprite(person)
 	await get_tree().create_timer(4.0).timeout
-	GlobalData.bad_ehding = true
-	SaveManager.save_game()
 	get_tree().change_scene_to_file("res://scenes/Main Menu/main_menu.tscn")
 
 func increase_score():
@@ -135,6 +140,7 @@ func shake_sprite(sprite: Sprite2D, intensity: float = 5.0, duration: float = 3.
 		tween.tween_property(sprite, "position", original_pos, duration / 8.0)
 		
 func spawn_random_sprite():
+	heartbeat.play()
 	if smoke == null:
 		return
 	var screen_size = get_viewport_rect().size
@@ -165,3 +171,6 @@ func _on_smoke_cleared():
 	
 	if smokes_left == 0:
 		drain_rate = 1.0
+
+func _on_intro_finished() -> void:
+	bgm.play()
